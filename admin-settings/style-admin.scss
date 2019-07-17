@@ -91,7 +91,7 @@ ul#adminmenu>li.current>a.current:after {
 	.acf-flexible-content {
 		
 		.layout {
-			background: hsl(32, 12%, 78%);
+			background: white;
 			border: none;
 			margin-bottom: 50px;
 			
@@ -111,5 +111,13 @@ ul#adminmenu>li.current>a.current:after {
 		.no-value-message {
 			color: hsl(0, 0%, 100%);
 		}
+	}
+}
+
+.heading_wysiwyg_editor {
+	
+	.acf-editor-wrap iframe {
+		height: 100px !important;
+		min-height: 100px;
 	}
 }

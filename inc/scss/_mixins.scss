@@ -81,3 +81,10 @@
 @mixin darkCircularGradient {
     background: radial-gradient(ellipse at center, hsl(0, 0%, 60%) 0%,hsl(0, 0%, 19%) 100%);
 }
+
+@mixin centered {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}

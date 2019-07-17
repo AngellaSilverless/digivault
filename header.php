@@ -2,7 +2,7 @@
 /**
  * Header
  *
- * @package silverlessmastertheme
+ * @package digivault
  */
 
 ?>
@@ -16,9 +16,9 @@
 <meta name="keywords" content=" ">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Silverless Master Theme</title>
+<title>DigiVault</title>
 
-<link rel="stylesheet" href="https://use.typekit.net/dmz2ckm.css"><!--TYPEKIT INJECT-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Unna&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css"/>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.0/mapbox-gl-geocoder.css" type="text/css" />
@@ -35,15 +35,37 @@
 		<main><!--closes in footer.php-->
 		
 			<nav id="nav">
-			
-			<?php
-			
-			wp_nav_menu(array(
-				'theme_location'  => 'main-menu',
-				'container_class' => 'mainMenu'
-			));
-			
-			?>
+				
+				<div class="container fullwidth cols-12">
+					
+					<div class="col container cols-4-8">
+						
+						<div class="col logo">
+							<?php
+							
+							$image = get_field("logo", "options");
+							
+							if(!empty($image)): ?>
+							
+							<a href="<?php echo home_url(); ?>"><img id="digivault-logo" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" /></a>
+							
+							<?php endif; ?>
+						</div>
+						
+						<div class="col">
+							<?php
+							
+							wp_nav_menu(array(
+								'theme_location'  => 'main-menu',
+								'container_class' => 'mainMenu'
+							));
+							
+							?>
+						</div>
+					
+					</div>
+				
+				</div>
 		
 			</nav>
 		

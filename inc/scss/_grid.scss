@@ -120,6 +120,49 @@
 
 */
 
+.cols-4-8 {
+    & > .col:nth-of-type(2n - 1) {
+        grid-column: span 4;      
+    }
+    & > .col:nth-of-type(2n) {
+        grid-column: span 8;     
+    }
+}
+
+.cols-3-9 {
+    & > .col:nth-of-type(n) {
+        grid-column: 3/9;     
+    }
+}
+
+.cols-3-11 {
+    & > .col:nth-of-type(n) {
+        grid-column: 3/11;     
+    }
+}
+
+.cols-3-6 {
+    & > .col:nth-of-type(1) {
+        grid-column: 3/6;
+        order: 1;  
+    }
+    & > .col:nth-of-type(2) {
+        grid-column: 7/13;
+        order: 2;
+    }
+}
+
+.cols-8-11 {
+    & > .col:nth-of-type(1) {
+        grid-column: 8/11;
+        order: 2;  
+    }
+    & > .col:nth-of-type(2) {
+        grid-column: 1/7;
+        order: 1;
+    }
+}
+
 /*===========MEDIA QUERIES==========*/
 
 @each $name, $size in $breakpoints {

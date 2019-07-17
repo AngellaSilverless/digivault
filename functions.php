@@ -1,8 +1,8 @@
 <?php
 /**
- * Silverless functions and definitions
+ * Digivault functions and definitions
  *
- * @package silverlessmastertheme
+ * @package digivault
  */
 
 /****************************************************/
@@ -34,6 +34,14 @@ add_filter('menu_order', 'silverless_reorder_menu');
 /* Remove Comments Link */
 add_action('wp_before_admin_bar_render', 'silverless_manage_admin_bar');
 
+/* Allow SVG */
+add_filter( 'wp_check_filetype_and_ext', 'silverless_allow_svg', 10, 4 );
+add_filter( 'upload_mimes', 'cc_mime_types' );
+add_action( 'admin_head', 'fix_svg' );
+
+/* ACF Options Page */
+silverless_add_options_page();
+
 
 /****************************************************/
 /*                     Functions                     /
@@ -61,16 +69,6 @@ function silverless_dashboard_help() {
 
 function silverless_custom_fonts() {
 	echo '<style type="text/css">' . file_get_contents(__DIR__ . "/admin-settings/style-admin.css") . '</style>';
-	
-	if(function_exists('acf_add_options_page')) {
-		acf_add_options_page(array(
-			'page_title' 	=> 'Theme Settings',
-			'menu_title'	=> 'Theme Settings',
-			'menu_slug' 	=> 'site-general-settings',
-			'capability'	=> 'edit_posts',
-			'redirect'		=> false
-		));
-	}
 }
  
 function silverless_remove_menus(){
@@ -102,4 +100,47 @@ function silverless_reorder_menu() {
 function silverless_manage_admin_bar(){
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('comments');
+}
+
+function silverless_allow_svg($data, $file, $filename, $mimes) {
+ 
+	global $wp_version;
+	if($wp_version !== '5.2.2') {
+		return $data;
+	}
+	
+	$filetype = wp_check_filetype( $filename, $mimes );
+	
+	return [
+		'ext'             => $filetype['ext'],
+		'type'            => $filetype['type'],
+		'proper_filename' => $data['proper_filename']
+	];
+ 
+}
+ 
+function cc_mime_types( $mimes ){
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+ 
+function fix_svg() {
+	echo '<style type="text/css">
+			.attachment-266x266, .thumbnail img {
+				width: 100% !important;
+				height: auto !important;
+			}
+		</style>';
+}
+
+function silverless_add_options_page() {
+	if(function_exists('acf_add_options_page')) {
+		acf_add_options_page(array(
+			'page_title' 	=> 'Theme Settings',
+			'menu_title'	=> 'Theme Settings',
+			'menu_slug' 	=> 'site-general-settings',
+			'capability'	=> 'edit_posts',
+			'redirect'		=> false
+		));
+	}
 }

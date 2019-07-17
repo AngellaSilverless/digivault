@@ -1,7 +1,7 @@
 <?php
 /**
  * The template for displaying the footer
- * @package silverlessmastertheme
+ * @package digivault
  */
 ?>
 
@@ -15,7 +15,7 @@
 	
 		<div class="container cols-4">
 			
-			<div class="col colophon">&copy; Silverless Master Theme <?php echo date ('Y');?></div>
+			<div class="col colophon">&copy; DigiVault <?php echo date ('Y');?></div>
 			
 			<div class="col silverless">
 				

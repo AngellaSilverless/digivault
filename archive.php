@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package silverlessmastertheme
+ * @package digivault
  */
 get_header();?>
 

@@ -1,35 +1,33 @@
-<?php 
+<?php $heroImage = get_field('hero_background_image');?>
 
-if( get_field('hero_type') == 'image' ):
-	$heroImage = get_field('hero_background_image');
-elseif ( get_field('hero_type') == 'color' ):
-	$heroColor = get_field('hero_background_colour');
-endif;
+<div class="hero <?php the_field('hero_height');?>" style="background-image: url(<?php echo $heroImage['url']; ?>);">
 
-if( get_field('hero_type') !== 'slider'):
-
-?>
-
-<div class="hero <?php the_field('hero_height');?>" style="background-image: url(<?php echo $heroImage['url']; ?>); background-color: <?php echo $heroColor; ?>;">
-
-	<div class="container">
+	<div class="container cols-3-9">
 		
-		<div class="hero__content">
-		
-			<?php $brandImage = get_field('logo', 'options');?>
+		<div class="col hero__content">
 			
-			<a href="<?php echo home_url(); ?>" alt="<?php wp_title(''); ?>" title="<?php wp_title(''); ?>" class="logo"><?php
+			<?php if(is_front_page()): ?>
+		
+			<h1 class="heading heading__lg heading__light home-text-effect"><?php
 				
-				get_template_part('template-parts/logo');
+				$heading = get_field('hero_heading');
+				
+				for($i = 0; $i < strlen($heading); $i++) {
+					echo "<span>{$heading[$i]}</span>";
+				}
 			
-			?></a>
-		
-			<h1 class="heading heading__xl slow-fade"><?php the_field('hero_heading');?></h1>
+			?></h1>
+			
+			<div class="copy slow-fade"><?php the_field('hero_copy');?></div>
+			
+			<?php $button = get_field('hero_button'); ?>
+			
+			<div class="wrapper-button mt3"><a href="<?php echo get_permalink($button["page"]); ?>" class="button button__light mt2"><span><?php echo $button["label"] ?></span></a></div>
+			
+			<?php endif; ?>
 		
 		</div>
 	
 	</div>
 
 </div><!--hero-->
-
-<?php endif;?>

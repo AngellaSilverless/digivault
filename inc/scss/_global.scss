@@ -5,7 +5,7 @@
 }
 
 html {
-    font-size: 18px;
+    font-size: 16px;
 }
  
 html,
@@ -17,10 +17,11 @@ body {
 
 body {
     font-family: $body-font;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 200;
-    background: hsl(0, 0%, 96%);
-    color: hsl(0, 0%, 41%);
+    background: white;
+    color: $brand-secondary;
+    text-rendering: optimizeLegibility;
 }
 
 h2, .h2 {
@@ -82,7 +83,7 @@ p {
 a {
     display: inline-block;
     line-height: 1.2em;
-    color: $brand-primary;
+    color: $brand-secondary;
     transition:color 0.3s ease;
     text-decoration: none;
 
@@ -103,12 +104,35 @@ img {
     height: auto;
 }
 
+.hero {
+	@include backgroundCover;
+	
+	& > .container {
+		height: 100%;
+	}
+	
+	&__content {
+		height: 100%;
+		@include centered;
+		color: white;
+		
+		.copy {
+			font-size: 1.2em;
+			line-height: 2;
+			width: 75%;
+			margin-right: auto;
+		}
+	}
+}
+
 .heading {
     font-family: $brand-font;
-    font-weight: 100;    
+    font-weight: 100;
+    letter-spacing: 1px;
+    line-height: 1.2;
     
     &__alt {
-        font-family: $supporting-font;        
+        font-family: $brand-font;        
     }
     
     &__body {
@@ -121,6 +145,18 @@ img {
     
     &__light {
         color: white;
+    }
+    
+    &__primary-color {
+	    color: $brand-primary;
+    }
+    
+    &__secondary-color {
+	    color: $brand-secondary;
+    }
+    
+    &__tertiary-color {
+	    color: $brand-tertiary;
     }
     
     &__alt-color {
@@ -167,7 +203,7 @@ img {
     }  
     
     &__md {
-        font-size: 1.5em;    
+        font-size: 2.2em;    
     }   
     
     &__sm {
@@ -218,8 +254,8 @@ nav {
 	left: 0;
 	z-index: 200;
 	width: 100%;
-	background: $brand-primary;
-	color: white;
+	background: white;
+	color: $brand-secondary;
 	padding: 1em;
 	
 	.menu-trigger {
@@ -235,21 +271,26 @@ nav {
 
 	ul {
 		list-style: none;
+		text-align: right;
 		padding: 0;
-		font-family: $brand-font;
-		font-weight: 100;
-		letter-spacing: 2px;
+		font-weight: 700;
+		letter-spacing: 1px;
 		transition: margin 1s ease;
+		text-transform: uppercase;
 	
 		li {
+			display: inline-block;
     		position: relative;
 			padding:0;
 			color: white;
+			
+			&:not(:first-of-type) {
+				margin-left: 2em;
+			}
 		
 			a {
-			    display: block;
+				color: $brand-tertiary;
 			    padding: 0.25em 0;
-			    color: white;
 			    line-height: 1.5em;
 				transition: color 1s ease;
 			}
@@ -273,37 +314,36 @@ nav {
 			&.loaded::before {
 				transform: scaleX(1);
 			}
+			
+			.sub-menu {
+				
+				li {
+					display: none;
+					width: 100%;
+					text-align: right;
+				}
+			}
 		}
 	}
 }
 
-.brand {
-    position: absolute;
-    top:2em;
-    width:100%;
-    text-align: center;
-    z-index: 100;
-    
-    .st2 {
-        display: none;
-    }
+.logo {
+	display: flex;
+	align-items: center;
+	
+	a {
+		line-height: 1;
+	}
+	
+	#digivault-logo {
+		width: 15em;
+	}
 }
 
 .mainMenu {
 	width: 100%;
 	text-align: center;
 	z-index: 50;
-}
-
-.page-template-home {
-	
-	.hero {
-		align-items: center;
-		
-		h3 {
-			text-align: center;
-		}
-	}
 }
 
 .pagination {

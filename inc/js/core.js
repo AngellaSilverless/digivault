@@ -243,7 +243,7 @@ jQuery(document).ready(function( $ ) {
 	    
 	};
 
-	$('.slide-up, .slide-down, .slide-right, .slow-fade').each(function() {
+	$('.slide-up, .slide-down, .slide-right, .slow-fade, .home-text-effect').each(function() {
 		if ($(this).isOnScreen()) {
 			$(this).addClass('active');    
 		} 
@@ -261,7 +261,7 @@ jQuery(document).ready(function( $ ) {
 	
 	$(window).on('resize scroll', function() {
 		
-		$('.slide-up, .slide-down, .slide-right, .slow-fade').each(function() {
+		$('.slide-up, .slide-down, .slide-right, .slow-fade, .home-text-effect').each(function() {
 			if ($(this).isInViewport()) {
 				$(this).addClass('active');    
 			} 

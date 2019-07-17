@@ -2,7 +2,7 @@
 /**
  * The template for displaying 404 pages
  *
- * @package silverlessmastertheme
+ * @package digivault
  */
 
 get_header();

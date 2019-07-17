@@ -53,7 +53,30 @@ $weight: (100, 200, 300, 400, 500, 600, 700, 800, 900); // Amount string.
     }
 }
 
+/* Home Heading Effect */
+
+$interval: 0.04s;
+
+@for $i from 0 through 100 {
+	.active.home-text-effect span:nth-of-type(#{$i}) {
+		animation-delay: $interval * $i;
+	}
+	
+}
+
 /* Animation */
+
+@-webkit-keyframes revealText {
+	0% {
+		opacity: 0
+	}
+	33%, 66% {
+		opacity: 1
+	}
+	100% {
+		opacity: 0.6
+	}
+}
 
 @-webkit-keyframes pulse {
     0% {

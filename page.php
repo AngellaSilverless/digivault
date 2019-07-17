@@ -2,7 +2,7 @@
 /**
  * Default Page Template
  *
- * @package silverlessmastertheme
+ * @package digivault
  */
 ?>
 
