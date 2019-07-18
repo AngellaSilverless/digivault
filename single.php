@@ -4,30 +4,58 @@
  *
  * @package digivault
  */
-get_header(); ?>
+get_header(); 
+
+if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <!-- ******************* Hero Content ******************* -->
 
-<?php get_template_part("template-parts/hero"); ?>
+<?php get_template_part("template-parts/hero", "posts"); ?>
 
 <!-- ******************* Hero Content END ******************* -->
 
-<div class="container">
-
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-	<div class="post-card">
+<div class="container cols-3-7 pb5 pt3">
 	
-		<h2 class="heading heading__md"><a href="<?php echo get_permalink(); ?>"><?php the_title();  ?></a></h2>
+	<div class="col sidebar">
 		
-		<p><?php the_excerpt(); ?></p>
+		<div class="title heading heading__secondary-color mb1">Themes</div>
 		
-		<a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
-	
+		<?php $categories = get_categories(); foreach($categories as $category): ?>
+		
+		<a class="category mb1"><span><?php echo $category->name; ?></span></a>
+		
+		<?php endforeach; ?>
+		
+		<?php get_template_part("template-parts/search", "form"); ?>
+		
 	</div>
-
-	<?php endwhile; endif; ?>
-
-</div>
 	
-<?php get_footer(); ?>
+	<div class="col">
+		
+		<h2 class="heading heading__md mb0"><?php the_title(); ?></h2>
+		
+		<div class="post-date mt2 mb3"><?php the_date("d/m/y"); ?></div>
+		
+		<div class="post-content"><?php the_content(); ?></div>
+		
+	</div>
+	
+</div>
+
+
+<!-- Slider -->
+
+<div class="pb5"><div style="background: grey; color: white; font-size: 4em; height: 6em;">SLIDER BLOCK</div></div>
+
+<!-- CTA - Newsletter -->
+
+<?php get_template_part("template-parts/cta", "newsletter"); ?>
+
+<!-- CTA - Get in Touch -->
+
+<?php get_template_part("template-parts/cta", "get-in-touch"); ?>
+
+
+<?php endwhile; endif;
+	
+get_footer(); ?>

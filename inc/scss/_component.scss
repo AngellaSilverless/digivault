@@ -18,7 +18,6 @@
     letter-spacing: 2px;
     text-rendering: geometricPrecision; /*fix rendering issues on different buttons*/
     cursor: pointer;
-    
     transition: all 0.3s ease-in-out;
     background: linear-gradient($brand-primary, $brand-primary) no-repeat;
     background-size: 100% 0;
@@ -36,7 +35,6 @@
         font-size: 1.25em;
     }
 	
-	
 	&__light {
 		background: linear-gradient(white, white) no-repeat;
 		background-size: 100% 0;
@@ -48,38 +46,56 @@
 			color: darken($brand-primary, 10%);
 		}
 	}
+	
+	&__white {
+		background: linear-gradient(darken($brand-primary, 10%), darken($brand-primary, 10%)) no-repeat;
+		background-size: 100% 0;
+		background-position: center bottom;
+		color: $brand-primary;
+		border: none;
+		
+		&:hover {
+			background-size: 100% 100%;
+			color: white;
+		}
+	}
+}
+
+.button-white {
+	display: inline-block;
+	position: relative;
+	
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: white;
+	}
 }
 
 a.next-section {
+    display: block;
     position: absolute;
     bottom: 0;
-    display: block;
-    height: 4em;
-    transform: translateX(-50%);
     left: 50%;
-    font-family: $brand-font;
+    transform: translateX(-50%);
+    font-family: $body-font;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
     z-index: 10;
+    cursor: pointer;
     
-     &:before {
-        position: absolute;
-        content: '';
-        bottom: -1em;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 3.5em;
-        height: 3.5em;
-        background:url(inc/img/arrow-shape.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        transition: bottom 0.5s ease;
-        border-radius: 50px;
-    }
-    
-    &:hover:before {
-        bottom:-10px;
+    svg {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 10px;
+		height: 50px;
     }
 }
 
@@ -123,177 +139,6 @@ a.next-section {
               transform: translateY(0);
         }
     }
-}
-
-.map-wrapper {
-	padding: 0;
-	overflow: hidden;
-	width: 100%;
-	height: 100%;
-	
-	.heading {
-    	position: absolute;
-    	width: 100%;
-    	margin-top: 1em;
-    	text-align: center;
-    	z-index: 10;
-    	color: white;
-    	text-shadow: 0 0 20px black;
-    	
-        	svg {
-            	position: absolute;
-            	height:1em;
-            	width:1em;
-            	bottom: -1em;
-            	left:48%;
-            	fill:white;
-        	}
-	}
-}
-
-#bell-map-contact {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	font: 1em 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	
-	.marker {
-		background-color: white;
-		width: 30px;
-		height: 30px;
-		border: 5px solid hsl(0, 0%, 20%);
-		border-radius: 50%;
-		cursor: pointer;
-	}
-	
-	.mapboxgl-ctrl-geocoder--button {
-		outline: none;
-	}
-	
-	.mapboxgl-canvas {
-		outline: none;
-	}
-	
-	.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
-        display: none;
-	}
-	
-	.mapboxgl-popup-tip {
-		display: none;
-	}
-	
-	.mapboxgl-popup {
-		max-width: 250px;
-		will-change: unset;
-		line-height: 1.5;
-		width: 250px;
-		z-index: 10;
-	}
-	
-	.mapboxgl-popup-content {
-		text-align: left;
-		color: $brand-primary;
-		padding: 1.1em;
-		position: relative;
-		background: $brand-light-grey;
-		color: $brand-primary;
-		border-radius: 0;
-		box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.1), 1px -1px 2px rgba(0, 0, 0, 0.1), -1px 1px 2px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.1);
-		
-		.mapboxgl-popup-close-button {
-			font-size: 20px;
-			outline: none;
-			position: absolute;
-			top: -0.3em;
-			right: -0.3em;
-			background: $brand-primary;
-			color: white;
-			border-radius: 100%;
-			border: 3px solid $brand-light-grey;
-			cursor: pointer;
-			width: 35px;
-			height: 35px;
-			line-height: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			
-			&:before {
-				position: absolute;
-				top: -3px;
-				right: -3px;
-				width: calc(100% + 6px);
-				height: calc(100% + 6px);
-				content: "";
-				border-radius: 100%;
-				z-index: -1;
-				box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.1), 1px -1px 2px rgba(0, 0, 0, 0.1), -1px 1px 2px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.1);
-			}
-		}
-		
-		.buttons-popup {
-			width: 100%;
-	        text-align: center;
-		
-			a {
-				line-height: 1.4em;
-				display: inline-block;
-		        width: 100%;
-		        background-color: $brand-primary;
-		        border: 1px solid white;
-		        color: white;
-		        font-size: 14px;
-			    padding: 5px;
-			    margin: 5px 0px;
-			    letter-spacing: 0.1em;
-			    cursor: pointer;
-			    font-family: $body-font;
-			    font-weight: 200;
-			}
-		}
-		
-		div {
-			color: $brand-primary;
-			
-			&.title {
-				font-size: 1.5em;
-				display: inline-block;
-				text-align: center;
-				padding: 0 0 0.3em 0;
-				border-bottom: 1px solid $brand-primary;
-				font-family: $brand-font;
-				
-				span {
-					font-size: 0.5em;
-					transform: translateY(-0.6em);
-					border-bottom: 1px solid $brand-primary;
-					display: inline-block;
-				}
-			}
-			
-			&.name {
-			    font-size: 1.5em;
-			    line-height: 1em;
-			    margin-bottom: 1em;
-
-			}
-			
-			&.phone, &.address, &.email {
-				font-size: 1.2em;
-				font-weight: 400;
-				margin-left: 1em;
-				margin-top: 1em;
-			}
-			
-			&.address {
-				font-weight: 100;
-			}
-			
-			&.email {
-				margin-top: 0;
-			}
-		}
-	}
 }
 
 #contact-form {
@@ -350,3 +195,149 @@ a.next-section {
 	}
 }
 
+
+
+.ajax-loader {
+	position: absolute;
+}
+
+#main-contact {
+	
+	.form-fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 4em;
+		
+		label {
+			color: $brand-tertiary;
+			font-weight: 400;
+			line-height: 1.5;
+			font-size: 0.9em;
+		}
+		
+		input[type=text], input[type=email], textarea, select {
+			font-size: 1rem;
+			font-weight: 700;
+			padding: 0.75em 0;
+			margin-top: 0.25em;
+			border: none;
+			border-bottom: 1px solid $brand-secondary;
+			color: $brand-secondary;
+			letter-spacing: 0.5px;
+			width: 350px;
+			outline: none;
+			
+			&::placeholder {
+				font-size: 1rem;
+				font-weight: 700;
+				color: $brand-secondary;
+			}
+		}
+		
+		.custom-select {
+			display: inline-block;
+			position: relative;
+			
+			span {
+				display: block;
+			}
+			
+			input {
+				cursor: pointer;
+			}
+				
+			&:before {
+				color: $brand-secondary;
+				font-family: "Font Awesome 5 Free";
+				font-weight: 600;
+				content: "\f078";
+				position: absolute;
+				z-index: 1;
+				right: 1em;
+				font-size: 1.2em;
+				top: 50%;
+				transform: translateY(-50%);
+				cursor: pointer;
+			}
+			
+			.options {
+				position: absolute;
+				color: $brand-secondary;
+				font-weight: 600;
+				display: none;
+				width: 100%;
+				
+				&.visible {
+					display: block;
+				}
+				
+				span {
+					padding: 0.6em 1em;
+					cursor: pointer;
+					transition: all 0.3s ease-in-out;
+				    background: linear-gradient($brand-primary, $brand-primary) no-repeat;
+				    background-size: 100% 0;
+					background-position: center bottom;
+					
+					&:hover {
+						background-size: 100% 100%;
+						color: white;
+					}
+				}
+			}
+		}
+		
+		textarea {
+			resize: none;
+			overflow-y: hidden;
+		}
+	}
+	
+	p {
+		font-size: inherit;
+		margin-bottom: 1.5em;
+	}
+		
+	.button {
+		padding: 0.6rem 3rem;
+		margin-top: 2em;
+	}
+	
+	span.wpcf7-list-item {
+		margin: 0;
+		
+		span {
+			display: block;
+			text-transform: uppercase;
+			font-size: 0.8em;
+			font-weight: 800;
+			cursor: pointer;
+		}
+		
+		input[type=checkbox] {
+			margin: 0;
+			width: 16px;
+			height: 16px;
+			
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 600;
+				content: "";
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				border: 1px solid $brand-secondary;
+				background: white;
+				box-shadow: 0 0 0 1px $brand-tertiary inset;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			&:checked::before {
+				content: "\f00c";
+			}
+		}
+	}
+}

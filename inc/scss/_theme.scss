@@ -109,6 +109,13 @@
 			display: flex;
 			align-items: center;
 		}
+		
+		&-link {
+			
+			.image {
+				height: 100%;
+			}
+		}
 	}
 	
 	&-text-section {
@@ -119,6 +126,171 @@
 			line-height: 1.5;
 		}
 	}
+	
+	&-small-section {
+		font-weight: bold;
+		margin-bottom: 1.5em;
+		line-height: 1.8;
+	}
+}
+
+.cta {
+	
+	&-newsletter {
+		background: $brand-primary;
+		color: white;
+		
+		.title {
+			text-transform: uppercase;
+			font-family: $body-font;
+			font-size: 1em;
+			font-weight: 800;
+		}
+		
+		.input-newsletter {
+			background: none;
+			color: white;
+			font-size: 0.9em;
+			border: none;
+			border-bottom: 1px solid white;
+			padding: 0.5em;
+			margin-right: 0.5em;
+			
+			&::placeholder {
+		        color: white;
+		    }
+		}
+		
+		.form {
+			display: flex;
+			align-items: flex-end;
+		}
+		
+		#form-newsletter {
+			p {
+				display: inline-block;
+				margin-bottom: 0;
+			}
+		}
+	}
+	
+	&-get-in-touch {
+		height: 25em;
+		@include backgroundCover;
+		
+		& > .container {
+			height: 100%;
+			
+			& .col {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+	
+	&-contact {
+		height: 30em;
+		@include backgroundCover;
+	}
+}
+
+.heading-icon-box {
+	font-weight: bold;
+    line-height: 1.8;
+    font-size: 1em;
 }
 
 /*===========FOOTER==========*/
+
+/*===========POSTS==========*/
+	
+.hero-posts {
+	height: 65vh;
+	padding-top: 88px;
+}
+
+.post-content {
+	color: $brand-tertiary;
+	font-weight: 400;
+	line-height: 1.5;
+    
+    p {
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+	}
+	
+	strong {
+		color: $brand-secondary;
+	}
+}
+
+.post-date {
+	color: $brand-primary;
+	font-size: 0.9em;
+	font-weight: 800;
+}
+
+.sidebar {
+	padding-top: 15vh;
+
+	.title {
+		font-size: 1.7em;
+	}
+
+}
+
+.category {
+	color: $brand-tertiary;
+	font-weight: 400;
+	line-height: 1.5;
+	cursor: pointer;
+	display: block;
+	transition: all 0.3s ease-in-out;
+	
+	&:hover {
+		color: $brand-primary;
+	}
+}
+
+#searchform {
+	
+	.wrapper-form {
+		display: inline-block;
+		position: relative;
+	}
+	
+	.search-value {
+		font-size: 1em;
+		width: 200px;
+		border: none;
+		border-bottom: 1px solid $brand-secondary;
+		color: $brand-secondary;
+		padding-bottom: 5px;
+		padding-right: 25px;
+		
+		&::placeholder {
+			font-size: 1em;
+			color: $brand-tertiary;
+		}
+	}
+	
+	#searchsubmit {
+		display: none;
+	}
+	
+	label {
+		position: absolute;
+		bottom: 2px;
+		right: 0;
+	}
+	
+	svg {
+		height: 20px;
+		width: 20px;
+		
+		#search-icon {
+			fill: $brand-primary;
+		}
+	}
+}

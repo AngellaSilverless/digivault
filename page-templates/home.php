@@ -14,7 +14,7 @@ get_header();?>
 
 <!-- Main Heading -->
 
-<?php set_query_var("fields", get_field("main_heading")); get_template_part("template-parts/custom", "main-heading"); ?>
+<?php set_query_var("fields", get_field("main_heading")); set_query_var("home", true); get_template_part("template-parts/custom", "main-heading"); ?>
 
 <!-- Icon Box -->
 
@@ -33,11 +33,20 @@ get_header();?>
 <?php set_query_var("fields", get_field("text_section")); get_template_part("template-parts/custom", "text-section"); ?>
 
 <!-- Slider -->
+
 <div class="pb5"><div style="background: grey; color: white; font-size: 4em; height: 6em;">SLIDER BLOCK</div></div>
 
 <!-- Link Section -->
 
 <?php set_query_var("fields", get_field("link_section")); get_template_part("template-parts/custom", "link-section"); ?>
+
+<!-- CTA - Newsletter -->
+
+<?php get_template_part("template-parts/cta", "newsletter"); ?>
+
+<!-- CTA - Get in Touch -->
+
+<?php get_template_part("template-parts/cta", "get-in-touch"); ?>
 
 
 <?php get_footer();?>

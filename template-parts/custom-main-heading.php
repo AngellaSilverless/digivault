@@ -1,8 +1,10 @@
-<div class="container pt5 cols-3-11">
+<div class="container pt5 cols-3-11" id="main-heading">
 	
 	<div class="col">
 		
-		<div class="container cols-6 pb2">
+		<?php $size = isset($home) && $home == true ? "cols-6" : "cols-9"; ?>
+		
+		<div class="container <?php echo $size; ?> pb2">
 		
 			<div class="col">
 				

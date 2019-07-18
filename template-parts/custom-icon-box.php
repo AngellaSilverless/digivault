@@ -4,11 +4,15 @@
 		
 		<?php $fields = $fields["icon_box"]; ?>
 		
-		<?php if($fields["box_title"]): ?>
+		<?php if($fields["box_title"]): if(is_front_page()): ?>
 		
 		<h2 class="heading heading__md heading__secondary-color"><?php echo $fields["box_title"]; ?></h2>
 		
-		<?php endif; ?>
+		<?php else: ?>
+			
+		<h2 class="heading-icon-box mb3"><?php echo $fields["box_title"]; ?></h2>
+		
+		<?php endif; endif; ?>
 		
 		<div class="container custom-box-icon cols-4 pb2">
 			

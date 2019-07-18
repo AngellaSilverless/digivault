@@ -105,6 +105,8 @@ img {
 }
 
 .hero {
+	position: relative;
+	padding-top: 88px;
 	@include backgroundCover;
 	
 	& > .container {
@@ -115,6 +117,10 @@ img {
 		height: 100%;
 		@include centered;
 		color: white;
+		
+		h1 {
+			width: 100%;
+		}
 		
 		.copy {
 			font-size: 1.2em;
@@ -207,7 +213,7 @@ img {
     }   
     
     &__sm {
-        font-size: 1.2em;   
+        font-size: 1.3em;   
         letter-spacing: 2px;
     }
     
@@ -277,38 +283,34 @@ nav {
 		letter-spacing: 1px;
 		transition: margin 1s ease;
 		text-transform: uppercase;
+		
+		&#menu-main-menu {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-start;
+			margin: 0.5em 0;
+		}
 	
 		li {
 			display: inline-block;
     		position: relative;
 			padding:0;
 			color: white;
-			
-			&:not(:first-of-type) {
-				margin-left: 2em;
-			}
 		
 			a {
 				color: $brand-tertiary;
-			    padding: 0.25em 0;
 			    line-height: 1.5em;
-				transition: color 1s ease;
-			}
-			
-			&.current-menu-item:before {
-                position: absolute;
-                content: '';
-                bottom: -2em;
-				width: 50px;
-				height: 2em;
-                height: 2em;
-                filter: brightness(1000%);
-                background-size: contain;
-                background-repeat: no-repeat;
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 1s ease;
-                transition-delay: 0.3s;
+				transition: color 0.5s ease, background 0.5s ease;
+				padding: 0.5em 1.2em;
+				transition: all 0.3s ease-in-out;
+			    background: linear-gradient($brand-primary, $brand-primary) no-repeat;
+			    background-size: 100% 0;
+				background-position: center bottom;
+				
+				&:hover {
+					background-size: 100% 100%;
+					color: white;
+				}
 			}
 			
 			&.loaded::before {
@@ -316,11 +318,18 @@ nav {
 			}
 			
 			.sub-menu {
+				display: none;
 				
 				li {
-					display: none;
+					display: block;
 					width: 100%;
 					text-align: right;
+					
+					a {
+						display: block;
+						font-size: 0.9em;
+						padding-right: 2rem;
+					}
 				}
 			}
 		}
@@ -329,7 +338,7 @@ nav {
 
 .logo {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	
 	a {
 		line-height: 1;
@@ -337,6 +346,7 @@ nav {
 	
 	#digivault-logo {
 		width: 15em;
+		margin-top: 0.5em;
 	}
 }
 
@@ -383,7 +393,7 @@ footer {
 	
 	.pre-socket {
 		padding: 2em 1em;
-		background: $brand-primary;
+		background: $brand-tertiary;
 		color: $brand-tertiary;
 		
 		.socials a {

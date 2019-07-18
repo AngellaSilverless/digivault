@@ -42,6 +42,8 @@ add_action( 'admin_head', 'fix_svg' );
 /* ACF Options Page */
 silverless_add_options_page();
 
+/* Position Hero before Content Editor on posts */
+add_action( 'edit_form_after_title', 'silverless_pre_title_metabox' );
 
 /****************************************************/
 /*                     Functions                     /
@@ -142,5 +144,22 @@ function silverless_add_options_page() {
 			'capability'	=> 'edit_posts',
 			'redirect'		=> false
 		));
+		acf_add_options_page(array(
+			'page_title' 	=> 'Call To Action',
+			'menu_title'	=> 'Call To Action',
+			'menu_slug' 	=> 'call-to-action',
+			'capability'	=> 'edit_posts',
+			'redirect'		=> false
+		));
+	}
+}
+
+function silverless_pre_title_metabox() {
+	$screen = get_current_screen();
+	
+	if($screen->post_type == "post" && $screen->parent_base == "edit") {
+		global $post, $wp_meta_boxes;
+		do_meta_boxes( get_current_screen(), 'normal', $post );
+		unset( $wp_meta_boxes['post']['normal'] );
 	}
 }

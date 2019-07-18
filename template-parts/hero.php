@@ -6,7 +6,7 @@
 		
 		<div class="col hero__content">
 			
-			<?php if(is_front_page()): ?>
+		<?php if(is_front_page()): ?>
 		
 			<h1 class="heading heading__lg heading__light home-text-effect"><?php
 				
@@ -24,7 +24,16 @@
 			
 			<div class="wrapper-button mt3"><a href="<?php echo get_permalink($button["page"]); ?>" class="button button__light mt2"><span><?php echo $button["label"] ?></span></a></div>
 			
-			<?php endif; ?>
+			<a class="next-section" href="#main-heading">
+				<?php get_template_part("template-parts/scroll"); ?>
+				<span>Scroll to learn more</span>
+			</a>
+			
+		<?php else: ?>
+		
+			<h1 class="heading heading__xl heading__light slow-fade"><?php the_field('hero_heading'); ?></h1>
+		
+		<?php endif; ?>
 		
 		</div>
 	
