@@ -22,7 +22,7 @@ get_header();?>
 
 <!-- Slider -->
 
-<div class="pb5"><div style="background: grey; color: white; font-size: 4em; height: 6em;">SLIDER BLOCK</div></div>
+<?php get_template_part("template-parts/slider", "content"); ?>
 
 <!-- Overview Panel with Link-->
 	

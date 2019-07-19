@@ -207,6 +207,10 @@
 .hero-posts {
 	height: 65vh;
 	padding-top: 88px;
+	
+	& > .col {
+		@include backgroundCover;
+	}
 }
 
 .post-content {

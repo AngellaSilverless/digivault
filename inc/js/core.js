@@ -1,9 +1,6 @@
-//@prepros-prepend jquery.magnific-popup.js
-//@prepros-prepend owl.carousel.min.js
-
 jQuery(document).ready(function( $ ) {
 
-/* ADD CLASS ON LOAD*/
+/* Add class on load */
 
     $("html").delay(1500).queue(function(next) {
         $(this).addClass("loaded");
@@ -11,7 +8,7 @@ jQuery(document).ready(function( $ ) {
         next();
     });
  
-//Smooth Scroll
+/* Smooth scroll */
 
     $('nav a, a.button, a.next-section').click(function(e) {
 	    if($(this).attr('href') != "#") {
@@ -22,9 +19,84 @@ jQuery(document).ready(function( $ ) {
 	    }
     });
 
+/* Slider control */
+
+	// Bigger Slide
+
+	$(".slider .prev").click(function() {
+		var slider    = $(this).parents(".slider-wrapper");
+		var current   = $(this).parents(".slider-item");
+		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
+
+		var slide_w   = 40;
+		var animation = 1000;
+		
+		current.removeClass("current").find(".copy").slideUp(1000);
+		current.prev().addClass("current").find(".copy").slideDown(1000);
+		
+		
+		$(".slider-item:last").insertBefore($(".slider-item:first"));
+		slider.css("margin-left", (margin + (-1) * slide_w) + "vw");
+		
+		slider.animate({
+			marginLeft: (margin + "vw")
+		}, animation);
+	});
+	
+	$(".slider .next").click(function() {
+		var slider    = $(this).parents(".slider-wrapper");
+		var current   = $(this).parents(".slider-item");
+		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
+
+		var slide_w   = 40;
+		var animation = 1000;
+		
+		current.removeClass("current").find(".copy").slideUp(1000);
+		current.next().addClass("current").find(".copy").slideDown(1000);
+		
+		slider.animate({
+			marginLeft: (margin + (-1) * slide_w) + "vw"
+		}, animation, function() {
+			$(".slider-item:first").insertAfter($(".slider-item:last"));
+			slider.css("margin-left", (margin + "vw"));
+		});
+	});
+	
+	// Smaller Slide
+	
+	$(".slider-insights .prev").click(function() {
+		var slider    = $(".slider-wrapper");
+		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
+
+		var slide_w   = 30;
+		var animation = 1000;
+		
+		$(".slider-item:last").insertBefore($(".slider-item:first"));
+		slider.css("margin-left", (margin + (-1) * slide_w) + "vw");
+		
+		slider.animate({
+			marginLeft: (margin + "vw")
+		}, animation);
+	});
+	
+	$(".slider-insights .next").click(function() {
+		var slider    = $(".slider-wrapper");
+		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
+
+		var slide_w   = 30;
+		var animation = 1000;
+		
+		slider.animate({
+			marginLeft: (margin + (-1) * slide_w) + "vw"
+		}, animation, function() {
+			$(".slider-item:first").insertAfter($(".slider-item:last"));
+			slider.css("margin-left", (margin + "vw"));
+		});
+	});
 
 // ========== Controller for lightbox elements
 
+/*
 	$(".gallery").each(function() {
 		$(this).find(".lightbox-gallery").magnificPopup({
 	        type: 'image',
@@ -87,6 +159,7 @@ jQuery(document).ready(function( $ ) {
             }
         }
     });
+*/
 
 /* CLASS AND FOCUS ON CLICK */
     
@@ -120,6 +193,12 @@ jQuery(document).ready(function( $ ) {
 	
 	$(".options span").click(function() {
 		$(this).parents(".custom-select").find("input").val($(this).text());
+	});
+	
+	$(".slider-item").hover(function() {
+		$(this).find(".wrapper-more").stop().slideDown();
+	}, function() {
+		$(this).find(".wrapper-more").stop().slideUp();
 	});
 
 // ========== Add class if in viewport on page load
