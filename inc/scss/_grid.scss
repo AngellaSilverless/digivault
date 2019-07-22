@@ -154,6 +154,15 @@
     }
 }
 
+.cols-3-9-11 {
+    & > .col:nth-of-type(2n - 1) {
+        grid-column: 3/9;     
+    }
+    & > .col:nth-of-type(2n) {
+        grid-column: 9/13;     
+    }
+}
+
 .cols-3-12 {
     & > .col:nth-of-type(n) {
         grid-column: 3/12;     

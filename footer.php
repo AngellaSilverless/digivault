@@ -45,6 +45,9 @@
 
 <?php wp_footer(); ?>
 
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'>
+
+
 </body>
 
 </html>

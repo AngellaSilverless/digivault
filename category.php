@@ -1,23 +1,22 @@
 <?php
 /**
- * The template for displaying 404 pages
+ * The template for displaying all categories
  *
  * @package digivault
  */
-
-get_header(); ?>
+get_header();?>
 
 <!-- ******************* Hero Content ******************* -->
 
-<?php $heroImage = get_field("not_found_background_image", "options"); ?>
+<?php $heroImage = get_field('hero_background_image');?>
 
-<div class="hero h75" style="background-image: url(<?php echo $heroImage["url"]; ?>);">
+<div class="hero h50" style="background-image: url('http://digivault.local/wp-content/uploads/2019/07/christopher-burns-Kj2SaNHG-hg-unsplash_v2.jpg');">
 
 	<div class="container cols-3-9">
 		
 		<div class="col hero__content">
 		
-			<h1 class="heading heading__xl heading__light slow-fade">Oops! That page can't be found.</h1>
+			<h1 class="heading heading__xl heading__light slow-fade"><?php echo get_the_category()[0]->name; ?></h1>
 		
 		</div>
 	
@@ -27,21 +26,13 @@ get_header(); ?>
 
 <!-- ******************* Hero Content END ******************* -->
 
-<div class="container pt5 pb5 cols-3-11">
-	
-	<div class="col search-header">
-	
-		<div class="small-description">It looks like nothing was found at this location. Maybe try one of the links below or a search?</div>
-	
-	</div>
+<!-- Slider -->
 
-</div>
-
-<div class="container pb5 cols-3-9-11" id="filter-insights">
+<div class="container pt7 pb5 cols-3-9-11" id="filter-insights">
 	
 	<div class="col">
 	
-		<div class="title heading heading__secondary-color mb1">Recent Posts</div>
+		<div class="title heading heading__secondary-color mb1">Other Themes</div>
 		
 		<?php $categories = get_categories(); foreach($categories as $category): if($category->term_id != get_the_category()[0]->term_id): ?>
 		
@@ -59,9 +50,16 @@ get_header(); ?>
 	
 </div>
 
-<?php $insights = get_posts(array(
-	"posts_per_page" => 5
-)); ?>
+<?php
+	
+$cat = get_the_category()[0]->term_id;
+	
+$insights = get_posts(array(
+	"numberposts" => -1,
+	"category"    => $cat
+));
+
+?>
 
 <?php set_query_var("insights", $insights); get_template_part("template-parts/slider", "insights"); ?>
 
@@ -72,5 +70,5 @@ get_header(); ?>
 <!-- CTA - Get in Touch -->
 
 <?php get_template_part("template-parts/cta", "get-in-touch"); ?>
-
+	
 <?php get_footer(); ?>

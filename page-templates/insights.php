@@ -18,7 +18,35 @@ get_header();?>
 
 <!-- Slider -->
 
-<div class="pb5"><div style="background: grey; color: white; font-size: 4em; height: 6em;">SLIDER BLOCK</div></div>
+<div class="container pt2 pb5 cols-3-9-11" id="filter-insights">
+	
+	<div class="col">
+	
+		<div class="title heading heading__secondary-color mb1">Themes</div>
+		
+		<?php $categories = get_categories(); foreach($categories as $category): ?>
+		
+		<a class="category category__inline category__filter mb1" data-name="<?php echo $category->slug; ?>"><span><?php echo $category->name; ?></span></a>
+		
+		<?php endforeach; ?>
+		
+		<div class="reset-category"><i class="fas fa-undo"></i></div>
+	
+	</div>
+	
+	<div class="col wrapper-search-form">
+		
+		<?php get_template_part("template-parts/search", "form"); ?>
+		
+	</div>
+	
+</div>
+
+<?php $insights = get_posts(array(
+	"numberposts" => -1
+)); ?>
+
+<?php set_query_var("insights", $insights); get_template_part("template-parts/slider", "insights"); ?>
 
 <!-- CTA - Newsletter -->
 

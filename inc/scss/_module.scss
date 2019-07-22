@@ -154,9 +154,15 @@
 			display: inline-block;
 			font-size: 1rem;
 			height: 37em;
-			width: 21vw;
+			width: 30vw;
 			padding: 0;
-			margin: 0 4.5vw;
+			margin: 0;
+			
+			.wrapper-item {
+				width: 100%;
+				height: 100%;
+				padding: 0 4.5vw
+			}
 			
 			.item {
 				width: 100%;
@@ -165,6 +171,7 @@
 				@include backgroundCover;
 				position: relative;
 				z-index: 2;
+				overflow: hidden;
 				
 				&:before {
 					content: "";
@@ -186,10 +193,17 @@
 					padding: 2rem;
 				}
 				
-				.info {
-					padding: 2rem;
+				.wrapper-info {
 					background: $brand-primary;
 					width: 90%;
+					overflow: hidden;
+					
+					&.hidden {
+						white-space: nowrap;
+					}
+				}
+				.info {
+					padding: 2rem;
 					font-weight: bold;
 				}
 				
@@ -233,6 +247,12 @@
 		margin-top: 2em;
 		margin-left: 4.5vw;
 		width: 81vw;
+		opacity: 1;
+		transition: opacity 0.5s ease-in-out;
+		
+		&.hidden {
+			opacity: 0;
+		}
 		
 		.next, .prev {
 			position: relative;

@@ -9,36 +9,50 @@ get_header(); ?>
 
 <!-- ******************* Hero Content ******************* -->
 
-<?php get_template_part("template-parts/hero"); ?>
+<?php $heroImage = get_field("search_background_image", "options"); ?>
+
+<div class="hero h75" style="background-image: url(<?php echo $heroImage["url"]; ?>);">
+
+	<div class="container cols-3-9">
+		
+		<div class="col hero__content">
+		
+			<h1 class="heading heading__xl heading__light slow-fade"><?php _e( 'You searched for', 'locale' ); ?> '<?php the_search_query(); ?>'</h1>
+		
+		</div>
+	
+	</div>
+
+</div>
 
 <!-- ******************* Hero Content END ******************* -->
 
 <?php global $wp_query; ?>
 
-<div class="search-header mt3 mb3">
-
-	<h2 class="heading__md"><?php _e( 'You searched for', 'locale' ); ?> '<?php the_search_query(); ?>'</h2>
-
-	<p>We found <?php echo $wp_query->found_posts; ?>  results</p>
-
-</div>
-
-<div class="container">
+<div class="container pt5 pb5 cols-3-9-11" id="filter-insights">
 	
-	<?php if(have_posts()): while(have_posts()): the_post(); ?>
-
-	<div class="search-card">
+	<div class="col search-header">
 	
-		<h2 class="heading heading__md"><a href="<?php echo get_permalink(); ?>"><?php the_title();  ?></a></h2>
-		
-		<p><?php the_excerpt(); ?></p>
-		
-		<a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
+		<div class="small-description">We found <?php echo $wp_query->found_posts; ?>  results.</div>
 	
 	</div>
 	
-	<?php endwhile; endif; ?>
-
+	<div class="col wrapper-search-form">
+		
+		<?php get_template_part("template-parts/search", "form"); ?>
+		
+	</div>
+	
 </div>
 
+<?php set_query_var("insights", $wp_query->posts); get_template_part("template-parts/slider", "insights"); ?>
+
+<!-- CTA - Newsletter -->
+
+<?php get_template_part("template-parts/cta", "newsletter"); ?>
+
+<!-- CTA - Get in Touch -->
+
+<?php get_template_part("template-parts/cta", "get-in-touch"); ?>
+	
 <?php get_footer(); ?>

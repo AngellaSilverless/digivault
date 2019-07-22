@@ -34,7 +34,9 @@ get_header();?>
 
 <!-- Slider -->
 
-<?php get_template_part("template-parts/slider", "insights"); ?>
+<?php $insights = get_posts(); ?>
+
+<?php set_query_var("insights", $insights); get_template_part("template-parts/slider", "insights"); ?>
 
 <!-- Link Section -->
 

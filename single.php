@@ -22,7 +22,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 		
 		<?php $categories = get_categories(); foreach($categories as $category): ?>
 		
-		<a class="category mb1"><span><?php echo $category->name; ?></span></a>
+		<a class="category mb1" href="<?php echo get_category_link($category->term_id); ?>"><span><?php echo $category->name; ?></span></a>
 		
 		<?php endforeach; ?>
 		
@@ -45,7 +45,31 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <!-- Slider -->
 
-<div class="pb5"><div style="background: grey; color: white; font-size: 4em; height: 6em;">SLIDER BLOCK</div></div>
+<?php
+	
+$cat = get_the_category($post->ID)[0]->term_id;
+	
+$insights = get_posts(array(
+	"numberposts"  => 5,
+	"category"     => $cat,
+	"post__not_in" => array($post->ID)
+));
+
+if(sizeof($insights) > 0): ?>
+
+<div class="container pb5 cols-3-11">
+	
+	<div class="col">
+	
+		<div class="heading heading__md heading__secondary-color mb1">Related Insights</div>
+	
+	</div>
+
+</div><?php endif; ?>
+
+<?php set_query_var("insights", $insights); get_template_part("template-parts/slider", "insights"); ?>
+
+
 
 <!-- CTA - Newsletter -->
 
