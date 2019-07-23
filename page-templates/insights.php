@@ -46,7 +46,11 @@ get_header();?>
 	"numberposts" => -1
 )); ?>
 
+<div class="wrapper pb5">
+	
 <?php set_query_var("insights", $insights); get_template_part("template-parts/slider", "insights"); ?>
+
+</div>
 
 <!-- CTA - Newsletter -->
 

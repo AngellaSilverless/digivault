@@ -8,45 +8,85 @@
 </main>
 
 <footer class="footer">
-
-	<div class="pre-socket"></div><!--pre-socket-->
 	
 	<div class="socket">
 	
-		<div class="container cols-4">
+		<div class="container cols-1-8-13 pt4 pb2">
 			
-			<div class="col colophon">&copy; DigiVault <?php echo date ('Y');?></div>
-			
-			<div class="col silverless">
+			<div class="col logo">
+				<?php
 				
-				<a href="https://silverless.co.uk"><?php get_template_part('inc/img/silverless', 'logo');?></a>
+				$image = get_field("logo", "options");
+				
+				if(!empty($image)): ?>
+				
+				<a href="<?php echo home_url(); ?>"><img id="digivault-logo" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" /></a>
+				
+				<?php endif; ?>
 				
 			</div>
 			
-			<div class="col mandatory">
+			<div class="col info">
 				
-				<a href="<?php echo home_url() . '/terms-conditions'; ?>">Terms</a>
+				<div><?php echo get_field("footer_text", "options"); ?></div>
 				
-				<span class="divider">|</span>
+				<div class="highlight">Digivault Limited <?php echo date("Y"); ?>. All rights reserved.</div>
 				
-				<a href="<?php echo home_url() . '/privacy-policy'; ?>">Privacy</a>
+			</div>
+			
+			<div class="col menus container no-gutter cols-4">
+				
+				<div class="col">
+					
+					<h3>Follow us</h3>
+					
+					<?php $socials = get_field("social_media", "options"); if($socials && sizeof($socials) > 0): ?>
+					
+					<ul>
+					
+						<?php foreach($socials as $social): ?>
+						
+						<li><a href="<?php echo $social["url"]; ?>"><?php echo $social["label"]; ?></a></li>
+							
+						<?php endforeach; ?>
+					
+					</ul>
+					
+					<?php endif; ?>
+					
+				</div>
+				
+				<div class="col">
+					
+					<h3>Useful Links</h3>
+					
+					<?php wp_nav_menu(array(
+						'menu' => 'Useful links'
+					)); ?>
+					
+				</div>
+				
+				<div class="col">
+					
+					<h3>Need help?</h3>
+					
+					<?php wp_nav_menu(array(
+						'menu' => 'Need help'
+					)); ?>
+					
+				</div>
 				
 			</div>
 			
 		</div>
-	
+			
 	</div>
-	
-	</div><!--socket-->
 
 </footer>
 
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
-<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'>
-
 
 </body>
 

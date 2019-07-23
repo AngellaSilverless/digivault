@@ -20,3 +20,36 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px $brand-primary inset !important;
     -webkit-text-fill-color: white !important;
 }
+
+$countries: ['usa', 'uk', 'switzerland', 'germany', 'uae', 'japan', 'hongkong'];
+
+$delay: 0.3;
+$i: 0;
+
+@each $country in $countries {
+	##{$country} {
+		transition: opacity 0.5s ease;
+		transition-delay: #{$delay * $i}s;
+	}
+	$i: $i + 1;
+}
+
+#map {
+	
+	.marker {
+		cursor: pointer;
+		opacity: 0;
+	}
+	
+	&.active {
+		
+		.marker {
+			opacity: 1;
+		}
+	}
+	
+	.pin {
+		opacity: 0;
+		display: none;
+	}
+}

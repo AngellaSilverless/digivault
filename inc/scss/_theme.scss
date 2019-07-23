@@ -64,9 +64,17 @@
 			flex-direction: column;
 		}
 		
-		.icon svg, .icon img {
-			width: 40px;
+		div.icon {
+			width: 50px;
+			height: 50px;
 			margin-bottom: 0.5em;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			
+			svg, img {
+				width: 50px;
+			}
 		}
 		
 		h3 {
@@ -103,6 +111,10 @@
 			@include backgroundCover;
 			height: 50vh;
 			width: 100%;
+			
+			&.fullheight {
+				height: 100%;
+			}
 		}
 		
 		.info {
@@ -114,6 +126,29 @@
 			
 			.image {
 				height: 100%;
+			}
+		}
+		
+		.contact-info {
+			line-height: 1.8;
+			
+			.heading {
+				margin-bottom: 0.5em;
+			}
+			
+			.info {
+				font-weight: bold;
+				margin-bottom: 1.5em;
+				line-height: 1.8;
+				
+				&.link {
+					color: $brand-primary;
+					transition: color 0.5s ease-in-out;
+					
+					&:hover {
+						color: darken($brand-primary, 10%);
+					}
+				}
 			}
 		}
 	}
@@ -192,6 +227,22 @@
 		height: 30em;
 		@include backgroundCover;
 	}
+	
+	&-accreditations {
+		
+		.copy {
+			font-weight: bold;
+			line-height: 1.8;
+		}
+		
+		.gallery-small {
+			
+			img {
+				height: 6em;
+				margin-right: 1em;
+			}
+		}
+	}
 }
 
 .heading-icon-box {
@@ -201,6 +252,46 @@
 }
 
 /*===========FOOTER==========*/
+
+footer {
+	
+	.info {
+		font-size: 0.85em;
+		color: white;
+		line-height: 1.8;
+		
+		.highlight {
+			font-weight: bold;
+			margin-top: 1em;
+		}
+	}
+	
+	.menus {
+		font-size: 0.85em;
+		color: white;
+		
+		h3 {
+			font-weight: bold;
+			font-size: 1em;
+			margin: 0 0 1em 0;
+		}
+		
+		ul {
+			margin: 0;
+			padding: 0;
+			
+			li {
+				list-style: none;
+				
+				a {
+					color: white;
+					display: block;
+					line-height: 2;
+				}
+			}
+		}
+	}
+}
 
 /*===========POSTS==========*/
 	
@@ -244,10 +335,10 @@
 
 }
 
-.category {
+a.category {
 	color: $brand-tertiary;
 	font-size: 1rem;
-	font-weight: 400;
+	font-weight: 100;
 	line-height: 1.5;
 	cursor: pointer;
 	display: block;
@@ -264,7 +355,7 @@
 			&:before {
 				content: "";
 				position: absolute;
-				right: 0;
+				right: 1px;
 				top: 50%;
 				height: 70%;
 				width: 1px;
@@ -274,13 +365,20 @@
 		}
 	}
 	
+	span {
+		font-weight: 400;
+	}
+	
 	&:hover {
 		color: $brand-primary;
 	}
 	
 	&.active {
 		color: $brand-primary;
-		font-weight: bold;
+		
+		span {
+			font-weight: bold;
+		}
 	}
 }
 
@@ -319,6 +417,7 @@
 	svg {
 		height: 20px;
 		width: 20px;
+		cursor: pointer;
 		
 		#search-icon {
 			fill: $brand-primary;

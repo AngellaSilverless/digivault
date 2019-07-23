@@ -1,10 +1,10 @@
 <div class="cta-newsletter">
 
-	<div class="container pt5 pb5 cols-3-12">
+	<div class="container pt7 pb7 cols-3-12">
 		
 		<div class="col">
 			
-			<div class="container no-gutter cols-7-5 pt2 pb2">
+			<div class="container no-gutter cols-7-5">
 			
 				<div class="col">
 					

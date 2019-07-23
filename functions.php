@@ -155,11 +155,19 @@ function silverless_add_options_page() {
 }
 
 function silverless_pre_title_metabox() {
-	$screen = get_current_screen();
+	global $post, $wp_meta_boxes;
 	
-	if($screen->post_type == "post" && $screen->parent_base == "edit") {
-		global $post, $wp_meta_boxes;
+	$screen     = get_current_screen();
+	$privacy    = get_page_by_path('privacy-policy');
+	$disclaimer = get_page_by_path('disclaimer');
+		
+	if(($screen->post_type == "post" && $screen->parent_base == "edit")) {
 		do_meta_boxes( get_current_screen(), 'normal', $post );
 		unset( $wp_meta_boxes['post']['normal'] );
+	}
+	
+	if(($privacy && $post->ID == $privacy->ID) || ($disclaimer && $post->ID == $disclaimer->ID)) {
+		do_meta_boxes( get_current_screen(), 'normal', $post );
+		unset( $wp_meta_boxes['page']['normal'] );
 	}
 }

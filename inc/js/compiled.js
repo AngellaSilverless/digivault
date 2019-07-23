@@ -254,6 +254,24 @@ jQuery(document).ready(function( $ ) {
 	}, function() {
 		$(this).find(".wrapper-more").stop().slideUp();
 	});
+	
+	$("#map .marker").click(function() {
+		var pin = "#pin-" + $(this).attr("id");
+		
+		$(".pin").not(pin).animate({
+			opacity: 0
+		}, 500, function() {
+			$(".pin").not(pin).css({
+				"display": "none"
+			})
+		});
+		
+		$(pin).css({
+			display: "block"
+		}).animate({
+			opacity: 1
+		}, 500);
+	});
 
 // ========== Add class if in viewport on page load
 
@@ -281,6 +299,19 @@ jQuery(document).ready(function( $ ) {
 			$(this).addClass('active');
 		} 
 	});
+		
+	if($("#map").length > 0 && !($("#map").hasClass("active"))) {
+		if($("#map").isOnScreen()) {
+			$("#map").addClass('active');
+			setTimeout(function() {
+				$("#pin-uk").css({
+					display: "block"
+				}).animate({
+					opacity: 1
+				}, 500);
+			}, 600);
+		}
+	}
 
 // ========== Add class on entering viewport
 
@@ -297,8 +328,21 @@ jQuery(document).ready(function( $ ) {
 		$('.slide-up, .slide-down, .slide-right, .slow-fade, .home-text-effect').each(function() {
 			if ($(this).isInViewport()) {
 				$(this).addClass('active');    
-			} 
+			}
 		});
+		
+		if($("#map").length > 0 && !($("#map").hasClass("active"))) {
+			if($("#map").isInViewport()) {
+				$(this).addClass('active');
+				setTimeout(function() {
+					$("#pin-uk").css({
+						display: "block"
+					}).animate({
+						opacity: 1
+					}, 500);
+				}, 700);
+			}
+		}
 	    
 	});
 

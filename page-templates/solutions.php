@@ -8,7 +8,21 @@ get_header();?>
 
 <!-- ******************* Hero Content ******************* -->
 
-<?php get_template_part("template-parts/hero"); ?>
+<?php $heroImage = get_field('hero_background_image');?>
+
+<div class="hero <?php the_field('hero_height');?>" style="background-image: url(<?php echo $heroImage['url']; ?>);">
+
+	<div class="container cols-3-9">
+		
+		<div class="col hero__content">
+		
+			<img class="slow-fade" src="<?php echo get_field('hero_heading_image')["url"]; ?>">
+		
+		</div>
+	
+	</div>
+
+</div>
 
 <!-- ******************* Hero Content END ******************* -->
 

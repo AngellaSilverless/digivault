@@ -46,6 +46,10 @@ get_header();?>
 
 <?php get_template_part("template-parts/cta", "newsletter"); ?>
 
+<!-- CTA - Accreditations -->
+
+<?php get_template_part("template-parts/cta", "accreditations"); ?>
+
 <!-- CTA - Get in Touch -->
 
 <?php get_template_part("template-parts/cta", "get-in-touch"); ?>

@@ -21,7 +21,6 @@ body {
     font-weight: 200;
     background: white;
     color: $brand-secondary;
-    text-rendering: optimizeLegibility;
 }
 
 h2, .h2 {
@@ -75,7 +74,6 @@ main {
 }
 
 p {
-    font-size: 1.2em;
     font-weight: 200;  
     line-height: 1.5em
 }
@@ -391,29 +389,10 @@ footer {
 		}
 	}
 	
-	.pre-socket {
-		padding: 2em 1em;
-		background: $brand-tertiary;
-		color: $brand-tertiary;
-		
-		.socials a {
-		    color: $brand-light-grey;
-		
-			&:hover {
-				color: white;
-			}
-		    
-		    &:not(:first-child) {
-			    margin-left: 1em;
-		    }
-		}
-	}
-	
 	.socket {
 		letter-spacing: 1px;
 		background: $brand-dark-grey;
-		color: $brand-tertiary;
-		padding: 1em;
+		color: white;
 		
 		.colophon, .mandatory {
 			font-size: 0.9em;

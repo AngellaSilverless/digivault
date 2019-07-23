@@ -1,8 +1,8 @@
 <?php
-
+	
 if($insights && sizeof($insights) > 0): $count = 1; ?>
 
-<div class="slider-insights mb10">
+<div class="slider-insights mb5">
 	
 	<div class="slider-wrapper" style="<?php echo "width:" . (sizeof($insights) * 30) . "vw"; ?>" current-filter="all">
 		
@@ -14,7 +14,18 @@ if($insights && sizeof($insights) > 0): $count = 1; ?>
 		
 				<a href="<?php echo get_permalink($item->ID); ?>" id="link-insight">
 					
-					<div class="item" style="background-image: url(<?php echo get_field("hero_background_image", $item->ID)["sizes"]["large"]; ?>);">
+					<?php
+						
+					$heroImage = get_field("hero_background_image", $item->ID);
+					
+					if(!$heroImage) {
+						$parentPage = get_page_by_path("insights");
+						$heroImage = get_field("hero_background_image", $parentPage);
+					}
+					
+					?>
+					
+					<div class="item" style="background-image: url(<?php echo $heroImage["sizes"]["large"]; ?>);">
 						
 						<div class="content">
 							
@@ -70,4 +81,4 @@ if($insights && sizeof($insights) > 0): $count = 1; ?>
 	
 </div>
 
-<?php endif;?>
+<?php endif; ?>

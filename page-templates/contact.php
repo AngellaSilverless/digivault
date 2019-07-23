@@ -28,6 +28,22 @@ get_header();?>
 
 </div>
 
+<!-- Overview Panel -->
+	
+<?php set_query_var("fields", get_field("overview_panel")); get_template_part("template-parts/custom", "overview-panel-contact"); ?>
+
+<!-- Map -->
+
+<div class="container pb5">
+	
+	<div class="col">
+	
+		<?php get_template_part("template-parts/map"); ?>
+		
+	</div>
+	
+</div>
+
 <!-- Footer Image -->
 
 <?php get_template_part("template-parts/cta", "contact"); ?>

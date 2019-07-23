@@ -8,9 +8,9 @@ get_header();?>
 
 <!-- ******************* Hero Content ******************* -->
 
-<?php $heroImage = get_field('hero_background_image');?>
+<?php $heroImage = get_field('categories_background_image', 'options');?>
 
-<div class="hero h50" style="background-image: url('http://digivault.local/wp-content/uploads/2019/07/christopher-burns-Kj2SaNHG-hg-unsplash_v2.jpg');">
+<div class="hero h50" style="background-image: url(<?php echo $heroImage["url"]; ?>);">
 
 	<div class="container cols-3-9">
 		
