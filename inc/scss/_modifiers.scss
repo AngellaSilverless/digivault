@@ -125,7 +125,7 @@ $interval: 0.04s;
 
 .slow-fade {
     opacity:0;
-    transition:opacity 3s ease;
+    transition:opacity 2s ease;
     
     &.active {
         opacity:1;
