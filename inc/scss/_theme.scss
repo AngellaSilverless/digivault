@@ -185,11 +185,12 @@
 		.input-newsletter {
 			background: none;
 			color: white;
-			font-size: 0.9em;
+			font-size: 1em;
 			border: none;
 			border-bottom: 1px solid white;
 			padding: 0.5em;
 			margin-right: 0.5em;
+			width: 16em;
 			
 			&::placeholder {
 		        color: white;
@@ -199,13 +200,7 @@
 		.form {
 			display: flex;
 			align-items: flex-end;
-		}
-		
-		#form-newsletter {
-			p {
-				display: inline-block;
-				margin-bottom: 0;
-			}
+			justify-content: flex-end;
 		}
 	}
 	
@@ -285,8 +280,23 @@ footer {
 				
 				a {
 					color: white;
-					display: block;
+					display: inline-block;
 					line-height: 2;
+					position: relative;
+					
+					&:before {
+						content: '';
+						position: absolute;
+						height: 1px;
+						bottom: 1px;
+						width: 0;
+						background: hsl(0, 0%, 40%);
+						transition: width 0.5s ease;
+					}
+					
+					&:hover::before {
+						width: 100%;
+					}
 				}
 			}
 		}
@@ -375,10 +385,6 @@ a.category {
 	
 	&.active {
 		color: $brand-primary;
-		
-		span {
-			font-weight: bold;
-		}
 	}
 }
 
@@ -441,7 +447,15 @@ a.category {
 
 .reset-category {
 	display: inline-block;
+	pointer-events: none;
+	opacity: 0;
 	margin-left: 1em;
 	color: $brand-primary;
 	cursor: pointer;
+	transition: opacity 0.3s ease-in-out;
+	
+	&.visible {
+		pointer-events: auto;
+		opacity: 1;
+	}
 }

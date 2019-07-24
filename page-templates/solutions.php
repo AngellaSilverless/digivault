@@ -12,7 +12,7 @@ get_header();?>
 
 <div class="hero <?php the_field('hero_height');?>" style="background-image: url(<?php echo $heroImage['url']; ?>);">
 
-	<div class="container cols-3-9">
+	<div class="container cols-3-8">
 		
 		<div class="col hero__content">
 		

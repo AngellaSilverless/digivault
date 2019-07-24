@@ -21,19 +21,6 @@ input:-webkit-autofill:active  {
     -webkit-text-fill-color: white !important;
 }
 
-$countries: ['usa', 'uk', 'switzerland', 'germany', 'uae', 'japan', 'hongkong'];
-
-$delay: 0.3;
-$i: 0;
-
-@each $country in $countries {
-	##{$country} {
-		transition: opacity 0.5s ease;
-		transition-delay: #{$delay * $i}s;
-	}
-	$i: $i + 1;
-}
-
 #map {
 	
 	.marker {
@@ -51,5 +38,50 @@ $i: 0;
 	.pin {
 		opacity: 0;
 		display: none;
+	}
+}
+
+#form-newsletter {
+	
+	p {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+	
+	span.wpcf7-not-valid-tip {
+		position: absolute;
+		width: 16em;
+		font-size: 0.8em;
+		color: hsla(0, 0%, 100%, 0.65);
+		padding-left: 0.5rem;
+	}
+	
+	div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
+		display: inline-block;
+		margin: 3em 0 0 0;
+		border: none;
+		background: white;
+		color: darken($brand-primary, 15%);
+		font-weight: 400;
+		padding: 0.5em 1em;
+		font-size: 0.9em;
+	}
+}
+
+#main-contact {
+	
+	span.wpcf7-not-valid-tip {
+		color: $brand-primary;
+		font-size: 0.8rem;
+	}
+	
+	div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
+		display: inline-block;
+		margin: 1em 0;
+		border: none;
+		background: darken($brand-primary, 15%);
+		color: white;
+		font-weight: 400;
+		padding: 1em;
 	}
 }

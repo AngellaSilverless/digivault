@@ -298,16 +298,30 @@ nav {
 			a {
 				color: $brand-tertiary;
 			    line-height: 1.5em;
-				transition: color 0.5s ease, background 0.5s ease;
 				padding: 0.5em 1.2em;
-				transition: all 0.3s ease-in-out;
-			    background: linear-gradient($brand-primary, $brand-primary) no-repeat;
-			    background-size: 100% 0;
-				background-position: center bottom;
+				transition: color 0.3s ease-in-out;
+				position: relative;
+				
+				&:before {
+					content: '';
+					position: absolute;
+					width: 100%;
+					height: calc(100% + 2px);
+					background: $brand-primary;
+					bottom: -1px;
+					left: 0;
+					transform: scaleY(0);
+					transition: transform .3s ease-in-out;
+					transform-origin: bottom;
+					z-index: -1;
+				}
 				
 				&:hover {
-					background-size: 100% 100%;
 					color: white;
+					
+					&:before {
+						transform: scaleY(1);
+					}
 				}
 			}
 			

@@ -64,6 +64,21 @@ $interval: 0.04s;
 	
 }
 
+/* Map Dots */
+
+$countries: ['usa', 'uk', 'switzerland', 'germany', 'uae', 'japan', 'hongkong'];
+
+$delay: 0.3;
+$i: 0;
+
+@each $country in $countries {
+	##{$country} {
+		transition: opacity 0.5s ease;
+		transition-delay: #{0.3 + $delay * $i}s;
+	}
+	$i: $i + 1;
+}
+
 /* Animation */
 
 @-webkit-keyframes revealText {

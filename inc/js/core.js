@@ -29,10 +29,10 @@ jQuery(document).ready(function( $ ) {
 		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
 
 		var slide_w   = 40;
-		var animation = 1000;
+		var animation = 500;
 		
-		current.removeClass("current").find(".copy").slideUp(1000);
-		current.prev().addClass("current").find(".copy").slideDown(1000);
+		current.removeClass("current").find(".copy").slideUp(animation);
+		current.prev().addClass("current").find(".copy").slideDown(animation);
 		
 		
 		$(".slider-item:last").insertBefore($(".slider-item:first"));
@@ -49,10 +49,10 @@ jQuery(document).ready(function( $ ) {
 		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
 
 		var slide_w   = 40;
-		var animation = 1000;
+		var animation = 500;
 		
-		current.removeClass("current").find(".copy").slideUp(1000);
-		current.next().addClass("current").find(".copy").slideDown(1000);
+		current.removeClass("current").find(".copy").slideUp(animation);
+		current.next().addClass("current").find(".copy").slideDown(animation);
 		
 		slider.animate({
 			marginLeft: (margin + (-1) * slide_w) + "vw"
@@ -69,7 +69,7 @@ jQuery(document).ready(function( $ ) {
 		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
 
 		var slide_w   = 30;
-		var animation = 1000;
+		var animation = 500;
 		
 		$(".slider-item:last").insertBefore($(".slider-item:first"));
 		slider.css("margin-left", (margin + (-1) * slide_w) + "vw");
@@ -84,7 +84,7 @@ jQuery(document).ready(function( $ ) {
 		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
 
 		var slide_w   = 30;
-		var animation = 1000;
+		var animation = 500;
 		
 		slider.animate({
 			marginLeft: (margin + (-1) * slide_w) + "vw"
@@ -94,50 +94,7 @@ jQuery(document).ready(function( $ ) {
 		});
 	});
 
-// ========== Controller for lightbox elements
-
-/*
-	$(".gallery").each(function() {
-		$(this).find(".lightbox-gallery").magnificPopup({
-	        type: 'image',
-	        gallery:{
-	            enabled:true
-	        }
-	    });
-	});
-    
-    $('.single-image').magnificPopup({
-		type: 'image',
-		closeOnContentClick: true,
-		closeBtnInside: false,
-		fixedContentPos: true,
-		mainClass: 'mfp-no-margins mfp-with-zoom',
-		image: {
-			verticalFit: true
-		},
-		zoom: {
-			enabled: true,
-			duration: 300
-		}
-	});
-	
-	$('.post-image a').magnificPopup({
-		type: 'image',
-		closeOnContentClick: true,
-		closeBtnInside: false,
-		fixedContentPos: true,
-		mainClass: 'mfp-no-margins mfp-with-zoom',
-		image: {
-			verticalFit: true
-		},
-		zoom: {
-			enabled: true,
-			duration: 300
-		}
-	});
-*/
-
-/* CLASS AND FOCUS ON CLICK */
+/* Class and focus on click */
     
     $(".menu-trigger").click(function() {
 	    $(".menu-collapse").toggleClass("visible");
@@ -168,13 +125,14 @@ jQuery(document).ready(function( $ ) {
 	});
 	
 	$(".options span").click(function() {
-		$(this).parents(".custom-select").find("input").val($(this).text());
+		$(this).parents(".custom-select").find("input").val($(this).text()).trigger("input");
 	});
 	
 	$(".category__filter").click(function() {
 		var cat = $(this).attr("data-name");
 		
 		$(this).addClass("active").siblings("a").removeClass("active");
+		$(".reset-category").addClass("visible");
 		
 		if($(".slider-wrapper").attr("current-filter") != cat) {
 		
@@ -222,6 +180,7 @@ jQuery(document).ready(function( $ ) {
 		if($(".slider-wrapper").attr("current-filter") != "all") {
 		
 			$(".category__filter").removeClass("active");
+			$(".reset-category").removeClass("visible");
 			
 			var items = $(".slider-item");
 	
@@ -272,6 +231,27 @@ jQuery(document).ready(function( $ ) {
 			opacity: 1
 		}, 500);
 	});
+	
+
+/* Form Control */
+
+	$(".form-fields .wpcf7-form-control").on('input', function() {
+		if($(this).val()) {
+			$(this).parents("label").find(".contact-label").addClass("visible");
+		} else {
+			$(this).parents("label").find(".contact-label").removeClass("visible");
+		} 
+	});
+
+/* Slider Item click */
+
+	$(".slider .slider-item .item").on("click", function(e) {
+		if($(this).parent().is($(".slider-item.current").next())) {
+			$(".slider .slider-item.current .next")[0].click();
+		} else if($(this).parent().is($(".slider-item.current").prev())) {
+			$(".slider .slider-item.current .prev")[0].click();
+		}
+	});
 
 // ========== Add class if in viewport on page load
 
@@ -303,13 +283,6 @@ jQuery(document).ready(function( $ ) {
 	if($("#map").length > 0 && !($("#map").hasClass("active"))) {
 		if($("#map").isOnScreen()) {
 			$("#map").addClass('active');
-			setTimeout(function() {
-				$("#pin-uk").css({
-					display: "block"
-				}).animate({
-					opacity: 1
-				}, 500);
-			}, 600);
 		}
 	}
 
@@ -333,14 +306,7 @@ jQuery(document).ready(function( $ ) {
 		
 		if($("#map").length > 0 && !($("#map").hasClass("active"))) {
 			if($("#map").isInViewport()) {
-				$(this).addClass('active');
-				setTimeout(function() {
-					$("#pin-uk").css({
-						display: "block"
-					}).animate({
-						opacity: 1
-					}, 500);
-				}, 700);
+				$("#map").addClass('active');
 			}
 		}
 	    
