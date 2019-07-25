@@ -258,7 +258,7 @@ a.next-section {
 	.form-fields {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-column-gap: 4em;
+		grid-column-gap: 10em;
 		
 		label {
 			
@@ -285,7 +285,7 @@ a.next-section {
 			border-bottom: 1px solid $brand-secondary;
 			color: $brand-secondary;
 			letter-spacing: 0.5px;
-			width: 350px;
+			width: 100%;
 			outline: none;
 			
 			&::placeholder {
@@ -296,6 +296,7 @@ a.next-section {
 		}
 		
 		.custom-select {
+			width: 100%;
 			display: inline-block;
 			position: relative;
 			

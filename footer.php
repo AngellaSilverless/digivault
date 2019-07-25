@@ -11,7 +11,7 @@
 	
 	<div class="socket">
 	
-		<div class="container cols-1-8-13 pt4 pb3">
+		<div class="container cols-1-8-13 pt4 pb3 spacing">
 			
 			<div class="col logo">
 				<?php

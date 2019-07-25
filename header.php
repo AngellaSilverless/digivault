@@ -50,7 +50,10 @@
 							<?php endif; ?>
 						</div>
 						
-						<div class="col">
+						<div class="col menu">
+							
+							<div class="menu-trigger"><i class="fas fa-bars"></i></div>
+								
 							<?php
 							
 							wp_nav_menu(array(

@@ -1,4 +1,4 @@
-<div class="container pt5 cols-3-11" id="main-heading">
+<div class="container pt5 cols-3-11 custom-main-heading" id="main-heading">
 	
 	<div class="col">
 		

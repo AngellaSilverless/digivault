@@ -14,7 +14,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <!-- ******************* Hero Content END ******************* -->
 
-<div class="container cols-3-7 pb5 pt3">
+<div class="container single-insight cols-3-7 pb5 pt3 spacing">
 	
 	<div class="col sidebar">
 		

@@ -21,14 +21,183 @@ jQuery(document).ready(function( $ ) {
 
 /* Slider control */
 
+	// Closure to set and get slider width
+	
+	var sliders = (function() {
+		
+		// Insights Slider //
+		var sliderI  = $(".slider-insights");
+		var wrapperI = $(".slider-insights .slider-wrapper");
+		var itemsI   = $(".slider-insights .slider-wrapper .slider-item");
+		var paddingI = $(".slider-insights .slider-wrapper .slider-item .wrapper-item");
+		var controlI = $(".slider-insights .control-wrap");
+		
+		var sliderInsightsWidth   = 0;
+		var sliderInsightsHeight  = 0;
+		var sliderInsightsPadding = 0;
+		
+		// About Slider //
+		var sliderA  = $(".slider");
+		var wrapperA = $(".slider .slider-wrapper");
+		var itemsA   = $(".slider .slider-wrapper .slider-item");
+		
+		var sliderWidth   = 0;
+		var sliderHeight  = 0;
+		var sliderMargin  = 0;
+		
+		
+		// Function to set width variable according to viewport //
+		function getSize() {
+			var width = Math.max(document.documentElement.clientWidth,  window.innerWidth  || 0);
+			
+			/*=========== EXTRA SMALL (576px) ==========*/
+			if(width <= 576) {
+				sliderInsightsWidth   = 100;
+				sliderInsightsHeight  = 30;
+				sliderInsightsPadding = 4.5;
+				
+				sliderWidth   = 80;
+				sliderHeight  = 30;
+				sliderMargin  = 5;
+			}
+			
+			/*=========== SMALL (768px) ==========*/
+			else if(width <= 768) {
+				sliderInsightsWidth   = 90;
+				sliderInsightsHeight  = 35;
+				sliderInsightsPadding = 4.5;
+				
+				sliderWidth   = 80;
+				sliderHeight  = 42	;
+				sliderMargin  = 5;
+			}
+			
+			/*=========== MEDIUM (992px) ==========*/
+			else if(width <= 992) {
+				sliderInsightsWidth   = 45;
+				sliderInsightsHeight  = 32;
+				sliderInsightsPadding = 3;
+				
+				sliderWidth   = 55;
+				sliderHeight  = 42;
+				sliderMargin  = 5;
+			}
+			
+			/*=========== LARGE (1200px) ==========*/
+			else if(width <= 1200) {
+				sliderInsightsWidth   = 45;
+				sliderInsightsHeight  = 38;
+				sliderInsightsPadding = 3;
+				
+				sliderWidth   = 50;
+				sliderHeight  = 42;
+				sliderMargin  = 5;
+			}
+			
+			/*======== EXTRA LARGE (1600px) =======*/
+			else if(width <= 1600) {
+				sliderInsightsWidth   = 32;
+				sliderInsightsHeight  = 36;
+				sliderInsightsPadding = 2;
+				
+				sliderWidth   = 35;
+				sliderHeight  = 42;
+				sliderMargin  = 5;
+			}
+			
+			/*======== BIGGER SCREENS (>1600px) =======*/
+			else if(width > 1600) {
+				sliderInsightsWidth   = 30;
+				sliderInsightsHeight  = 38;
+				sliderInsightsPadding = 3.5;
+				
+				sliderWidth   = 30;
+				sliderHeight  = 42;
+				sliderMargin  = 5;
+			}
+		}
+		
+		function getWrapperMargin() {
+			return 50 - (3 * (sliderWidth + 2 * sliderMargin)) / 2;
+		}
+		
+		// Change Insights Slider size
+		function changeInsightsSliderSize() {
+			wrapperI.css({
+				width: itemsI.length * sliderInsightsWidth + "vw"
+			});
+			
+			paddingI.css({
+				padding: "0 " + sliderInsightsPadding + "vw"
+			});
+			
+			itemsI.css({
+				width: sliderInsightsWidth + "vw",
+				height: sliderInsightsHeight + "em"
+			});
+			
+			controlI.css({
+				marginLeft: sliderInsightsPadding + "vw",
+				width: (Math.floor(100/sliderInsightsWidth) * sliderInsightsWidth - 2 * sliderInsightsPadding) + "vw"
+			});
+		}
+		
+		// Change About Slider size
+		function changeSliderSize() {
+			wrapperA.css({
+				width: itemsA.length * (sliderWidth + 2 * sliderMargin) + "vw",
+				marginLeft: getWrapperMargin() + "vw"
+			});
+			
+			itemsA.css({
+				width: sliderWidth + "vw",
+				height: sliderHeight + "em",
+				margin: "0 " + sliderMargin + "vw"
+			});
+		}
+		
+		return {
+			getSliderInsightsWidth: function() {
+				return sliderInsightsWidth;
+			},
+			getSliderWidth: function() {
+				return sliderWidth + 2 * sliderMargin;
+			},
+			getSliderMargin: function() {
+				return getWrapperMargin();
+			},
+			setSliderInsightsWidth: function() {
+				getSize();
+				changeInsightsSliderSize();
+			},
+			setSliderWidth: function() {
+				getSize();
+				changeSliderSize();
+			}
+		}
+	})();
+	
+	// On enter page, set width according to viewport size
+
+	sliders.setSliderWidth();
+	sliders.setSliderInsightsWidth();
+	
+	$(window).on("resize", function() {
+		sliders.setSliderWidth();
+		sliders.setSliderInsightsWidth();
+	});
+	
+	
+	/* Events PREV and NEXT */
+
 	// Bigger Slide
 
 	$(".slider .prev").click(function() {
 		var slider    = $(this).parents(".slider-wrapper");
 		var current   = $(this).parents(".slider-item");
-		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
+		var margin    = sliders.getSliderMargin();
 
-		var slide_w   = 40;
+		var slide_w   = sliders.getSliderWidth();
 		var animation = 500;
 		
 		current.removeClass("current").find(".copy").slideUp(animation);
@@ -46,9 +215,9 @@ jQuery(document).ready(function( $ ) {
 	$(".slider .next").click(function() {
 		var slider    = $(this).parents(".slider-wrapper");
 		var current   = $(this).parents(".slider-item");
-		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
+		var margin    = sliders.getSliderMargin();
 
-		var slide_w   = 40;
+		var slide_w   = sliders.getSliderWidth();
 		var animation = 500;
 		
 		current.removeClass("current").find(".copy").slideUp(animation);
@@ -68,7 +237,7 @@ jQuery(document).ready(function( $ ) {
 		var slider    = $(".slider-wrapper");
 		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
 
-		var slide_w   = 30;
+		var slide_w   = sliders.getSliderInsightsWidth();
 		var animation = 500;
 		
 		$(".slider-item:last").insertBefore($(".slider-item:first"));
@@ -83,7 +252,7 @@ jQuery(document).ready(function( $ ) {
 		var slider    = $(".slider-wrapper");
 		var margin    = parseInt(parseFloat(slider.css("margin-left")) * (100 / document.documentElement.clientWidth));
 
-		var slide_w   = 30;
+		var slide_w   = sliders.getSliderInsightsWidth();
 		var animation = 500;
 		
 		slider.animate({
@@ -97,9 +266,7 @@ jQuery(document).ready(function( $ ) {
 /* Class and focus on click */
     
     $(".menu-trigger").click(function() {
-	    $(".menu-collapse").toggleClass("visible");
-	    $(".current-menu-item").toggleClass("loaded");
-	    $(".menu-trigger").toggleClass("opened");
+	    $(".mainMenu").slideToggle();
     });
     
     $(".read-more").click(function() {
