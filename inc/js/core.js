@@ -93,10 +93,12 @@ jQuery(document).ready(function( $ ) {
 /* Slider Item click */
 
 	$(".slider .slider-item .item").on("click", function(e) {
-		if($(this).parent().is($(".slider-item.current").next())) {
-			$(".slider .slider-item.current .next")[0].click();
-		} else if($(this).parent().is($(".slider-item.current").prev())) {
-			$(".slider .slider-item.current .prev")[0].click();
+		if(!mouseMove) {
+			if($(this).parent().is($(".slider-item.current").next())) {
+				$(".slider .slider-item.current .next")[0].click();
+			} else if($(this).parent().is($(".slider-item.current").prev())) {
+				$(".slider .slider-item.current .prev")[0].click();
+			}
 		}
 	});
 
@@ -478,8 +480,13 @@ jQuery(document).ready(function( $ ) {
 /****************************************************/
 /*      Slider About Us - Mouse and touch events     /
 /****************************************************/
+
+	var mouseMove = false;
 	
 	$(document).on("mousedown touchstart", ".slider .slider-wrapper", function(e) {
+		$(document).off("mousemove touchmove");
+		
+		mouseMove = false;
 		
 		if(e.type == "mousedown") {
 			if(e.which != 1) return true;
@@ -494,7 +501,7 @@ jQuery(document).ready(function( $ ) {
 			var startX    = e.pageX || e.originalEvent.touches[0].pageX;
 			
 			$(document).on("mousemove touchmove", ".slider .slider-wrapper", function(e) {
-				
+				mouseMove  = true;
 				var x      = e.pageX || e.originalEvent.touches[0].pageX;
 				pixelsDrag = startX - x;
 				
@@ -524,14 +531,15 @@ jQuery(document).ready(function( $ ) {
 	});
 		
 	$(document).on("mouseup touchend", ".slider .slider-wrapper", function(e) {
+		$(document).off("mousemove touchmove");
 		
 		if(e.type == "mouseup") {
 			if(e.which != 1) return true;
 		}
 		
-		if($(e.target).hasClass("next") || $(e.target).hasClass("prev")) return true;
+		if(!mouseMove) return true;
 		
-		$(document).off("mousemove touchmove");
+		if($(e.target).hasClass("next") || $(e.target).hasClass("prev")) return true;
 		
 		slideMargin = parseFloat($(".slider-item").eq(0).css("margin-left"));
 		
