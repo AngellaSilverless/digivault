@@ -342,12 +342,15 @@ jQuery(document).ready(function( $ ) {
 
 	sliders.setSliderWidth();
 	sliders.setSliderInsightsWidth();
+	adjustControlWrap();
 	
 	$(window).on("resize", function() {
 		sliders.setSliderWidth();
 		sliders.setSliderInsightsWidth();
-		
-		
+		adjustControlWrap();
+	});
+	
+	function adjustControlWrap() {
 		if($(".slider-insights .slider-wrapper").length > 0) {
 			
 			var items;
@@ -364,7 +367,7 @@ jQuery(document).ready(function( $ ) {
 				$(".control-wrap").addClass("hidden");
 			}
 		}
-	});
+	}
 	
 	/* Drag Slider */
 	

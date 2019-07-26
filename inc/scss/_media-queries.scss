@@ -48,6 +48,10 @@ body {
 
 /*---CONTENT---*/
 
+.cols-3-7 > .col:nth-of-type(2n) {
+	grid-column: 5/12;
+}
+
 /*---FOOTER---*/
 
 }/*---end medium mq---*/
@@ -206,6 +210,21 @@ a.next-section {
 		
 		.image.fullheight {
 			height: 50vh;
+		}
+		
+		&-link .container:first-of-type {
+			margin-bottom: 0;
+			
+			.col:first-of-type {
+				order: 2;
+			}
+			.col:nth-of-type(2) {
+				order: 1;
+			}
+			
+			.image {
+				height: 50vh;
+			}
 		}
 	}
 	
