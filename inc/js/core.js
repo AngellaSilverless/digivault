@@ -79,6 +79,12 @@ jQuery(document).ready(function( $ ) {
 		}, 500);
 	});
 	
+	$(".slider-insights .link-insight").click(function(e) {
+		if(mouseMoveI) {
+			e.preventDefault();
+		}
+	});
+	
 
 /* Form Control */
 
@@ -380,8 +386,13 @@ jQuery(document).ready(function( $ ) {
 /****************************************************/
 /*       Slider Posts - Mouse and touch events       /
 /****************************************************/
+
+	var mouseMoveI = false;
 	
 	$(document).on("mousedown touchstart", ".slider-insights .slider-wrapper", function(e) {
+		$(document).off("mousemove touchmove");
+		
+		mouseMoveI = false;
 		
 		if(e.type == "mousedown") {
 			if(e.which != 1) return true;
@@ -396,6 +407,7 @@ jQuery(document).ready(function( $ ) {
 			var startX    = e.pageX || e.originalEvent.touches[0].pageX;
 			
 			$(document).on("mousemove touchmove", ".slider-insights .slider-wrapper", function(e) {
+				mouseMoveI = true;
 				var x      = e.pageX || e.originalEvent.touches[0].pageX;
 				pixelsDrag = startX - x;
 				
@@ -431,10 +443,13 @@ jQuery(document).ready(function( $ ) {
 	});
 		
 	$(document).on("mouseup touchend", ".slider-insights .slider-wrapper", function(e) {
+		$(document).off("mousemove touchmove");
 		
 		if(e.type == "mouseup") {
 			if(e.which != 1) return true;
 		}
+		
+		if(!mouseMoveI) return true;
 		
 		if($(e.target).hasClass("next") || $(e.target).hasClass("prev")) return true;
 		

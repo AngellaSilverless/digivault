@@ -12,7 +12,7 @@ if($insights && sizeof($insights) > 0): $count = 1; ?>
 			
 			<div class="wrapper-item">
 		
-				<a href="<?php echo get_permalink($item->ID); ?>" id="link-insight">
+				<a href="<?php echo get_permalink($item->ID); ?>" id="link-insight" class="link-insight">
 					
 					<?php
 						
