@@ -1,5 +1,16 @@
 /*! == MEDIA QUERIES == */
 
+/*===========EXTRA LARGE (1600px)==========*/
+
+@media only screen and (max-width: 1600px) {
+	
+.container.spacing {
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+}/*---end extra large mq---*/
+
 /*===========LARGE (1200px)==========*/
 
 @media only screen and (max-width: 1200px) {
@@ -15,6 +26,10 @@
 }
 
 /*---FOOTER---*/
+
+.cols-1-8-13 > .col:nth-of-type(3n) {
+	grid-column: 8/13;
+}
 
 }/*---end large mq---*/
 
@@ -295,10 +310,6 @@ footer .socket > .container {
 /*---HEADER---*/
 
 /*---CONTENT---*/
-
-.cta-newsletter .input-newsletter {
-	margin-bottom: 1em;
-}
 
 .marker {
 	r: 9;

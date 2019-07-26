@@ -67,8 +67,6 @@ if($insights && sizeof($insights) > 0): $count = 1; ?>
 	
 	</div>
 	
-	<?php if($count > 4): ?>
-	
 	<div class="control-wrap">
 		
 		<div class="prev">‹</div>
@@ -76,8 +74,6 @@ if($insights && sizeof($insights) > 0): $count = 1; ?>
 		<div class="next">›</div>
 	
 	</div>
-	
-	<?php endif; ?>
 	
 </div>
 
