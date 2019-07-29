@@ -74,6 +74,10 @@
     &.cols-6 > .col {
         grid-column: span 6;
     }
+
+    &.cols-8 > .col {
+        grid-column: span 8;
+    }
     
     &.cols-12 > .col {
         grid-column: span 12;

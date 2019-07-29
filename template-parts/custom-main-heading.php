@@ -2,7 +2,7 @@
 	
 	<div class="col">
 		
-		<?php $size = isset($home) && $home == true ? "cols-6" : "cols-9"; ?>
+		<?php $size = isset($home) && $home == true ? "cols-9" : "cols-9"; ?>
 		
 		<div class="container <?php echo $size; ?> pb2">
 		

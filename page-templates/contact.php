@@ -34,7 +34,7 @@ get_header();?>
 
 <!-- Map -->
 
-<div class="container pb5">
+<div class="container  cols-3-11 pb5">
 	
 	<div class="col">
 	

@@ -311,6 +311,15 @@ a.next-section {
 	margin-top: 0;
 }
 
+.custom-box-icon .col {
+    margin-bottom: 5em;
+}
+
+.cta-newsletter .input-newsletter,
+#form-newsletter p {
+    width: 100%;
+}
+
 /*---FOOTER---*/
 
 footer .socket > .container {
@@ -353,6 +362,11 @@ footer .socket > .container {
 		line-height: 1.5;
 		font-size: 0.9em;
 	}
+}
+
+.slider .slider-wrapper .slider-item .next:before, 
+.slider .slider-wrapper .slider-item .prev:before {
+    height: 0;
 }
 
 /*---FOOTER---*/

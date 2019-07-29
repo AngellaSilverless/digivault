@@ -38,7 +38,7 @@
 	
 	&-heading {
 		color: $brand-tertiary;
-		line-height: 1.5;
+		line-height: 1.3;
 		
 		strong {
 			font-weight: inherit;
@@ -109,7 +109,7 @@
 		
 		.image {
 			@include backgroundCover;
-			height: 50vh;
+			height: 100%;
 			width: 100%;
 			
 			&.fullheight {
@@ -167,6 +167,10 @@
 		margin-bottom: 1.5em;
 		line-height: 1.8;
 	}
+}
+
+.home .custom-overview-panel .info {
+	padding: 3em 0;
 }
 
 .cta {
@@ -404,7 +408,8 @@ a.category {
 		color: $brand-secondary;
 		padding-bottom: 5px;
 		padding-right: 25px;
-		
+	    font-family: "Open Sans", serif;
+	    
 		&::placeholder {
 			font-size: 1em;
 			color: $brand-tertiary;

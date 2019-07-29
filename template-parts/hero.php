@@ -22,7 +22,7 @@
 			
 			<?php $button = get_field('hero_button'); ?>
 			
-			<div class="wrapper-button mt3"><a href="<?php echo get_permalink($button["page"]); ?>" class="button button__light mt2"><span><?php echo $button["label"] ?></span></a></div>
+			<div class="wrapper-button mt0"><a href="<?php echo get_permalink($button["page"]); ?>" class="button button__light mt2"><span><?php echo $button["label"] ?></span></a></div>
 			
 			<a class="next-section" href="#main-heading">
 				<?php get_template_part("template-parts/scroll"); ?>

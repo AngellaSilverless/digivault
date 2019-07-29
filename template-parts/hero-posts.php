@@ -11,7 +11,7 @@ if($heroImage):
 
 ?>
 
-<div class="hero-posts container fullwidth cols-3-13">
+<div class="hero-posts container fullwidth">
 	
 	<div class="col" style="background-image: url(<?php echo $heroImage['url']; ?>);"></div>	
 

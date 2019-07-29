@@ -278,7 +278,7 @@ a.next-section {
 		
 		input[type=text], input[type=email], textarea, select {
 			font-size: 1rem;
-			font-weight: 700;
+			font-weight: 300;
 			font-family: $body-font;
 			background: none;
 			padding: 0.75em 0;
@@ -292,7 +292,7 @@ a.next-section {
 			
 			&::placeholder {
 				font-size: 1rem;
-				font-weight: 700;
+				font-weight: 300;
 				color: $brand-secondary;
 			}
 		}
@@ -330,6 +330,7 @@ a.next-section {
 				font-weight: 600;
 				display: none;
 				width: 100%;
+				background: #e7e7e7;
 				
 				&.visible {
 					display: block;
@@ -340,6 +341,7 @@ a.next-section {
 					padding: 0.6em 1em;
 					cursor: pointer;
 					transition: color 0.3s ease-in-out;
+					z-index: 99;
 					
 					&:before {
 						content: '';
@@ -407,17 +409,23 @@ a.next-section {
 				position: absolute;
 				width: 16px;
 				height: 16px;
-				border: 1px solid $brand-secondary;
-				background: white;
-				box-shadow: 0 0 0 1px $brand-tertiary inset;
+				border: none;
+				background: hsl(0, 0%, 87%);
 				cursor: pointer;
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				transition: background 0.5s ease;
 			}
 			
 			&:checked::before {
 				content: "\f00c";
+				color: white;
+				background: $brand-primary;
+			}
+			
+			&:hover:before {
+    			background: hsl(0, 0%, 70%);
 			}
 		}
 	}
