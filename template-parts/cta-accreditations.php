@@ -8,7 +8,7 @@
 			
 			<div class="heading heading__md heading__primary-color">Accreditations</div>
 		
-			<div class="container no-gutter cols-8 pt3 pb3">
+			<div class="container no-gutter cols-12 pt3 pb3">
 				
 				<div class="col">
 				
