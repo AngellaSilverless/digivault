@@ -28,7 +28,7 @@ get_header();?>
 
 <!-- Main Heading -->
 
-<?php set_query_var("fields", get_field("main_heading")); get_template_part("template-parts/custom", "main-heading"); ?>
+<?php set_query_var("fields", get_field("main_heading")); get_template_part("template-parts/custom", "main-heading-logo"); ?>
 
 <!-- Icon Box -->
 

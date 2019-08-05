@@ -251,6 +251,42 @@
     font-size: 1em;
 }
 
+.solutions-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	.logo-wrapper {
+		width: 70%;
+		height: 70%;
+		
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.content-text {
+	h2 {
+		font-weight: 100;
+		font-size: 2em;
+		font-family: $brand-font;
+		color: $brand-secondary;
+	}
+	
+	a {
+		color: $brand-primary;
+		font-weight: 400;
+	}
+	
+	h3 {
+		font-family: $brand-font;
+		font-size: 1.3em;
+		font-weight: 400;
+	}
+}
+
 /*===========FOOTER==========*/
 
 footer {
@@ -465,3 +501,22 @@ a.category {
 		opacity: 1;
 	}
 }
+
+/*===========SPECIFIC PAGE==========*/
+
+/*
+.page-id-19 {
+	
+	.heading__primary-color, .custom-heading em, .button, .heading__primary-color {
+		color: #231fc8;
+	}
+	
+	.cta-newsletter {
+		background: #231fc8;
+	}
+	
+	.custom-box-icon svg path {
+		fill: #231fc8 !important;
+	}
+}
+*/

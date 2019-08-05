@@ -26,9 +26,11 @@
 				
 			</div>
 			
+			<?php $footer_info = get_field("footer", "options"); ?>
+			
 			<div class="col info">
 				
-				<div><?php echo get_field("footer_text", "options"); ?></div>
+				<div><?php echo $footer_info["footer_text"]; ?></div>
 				
 				<div class="highlight">Digivault Limited <?php echo date("Y"); ?>. All rights reserved.</div>
 				
@@ -38,7 +40,7 @@
 				
 				<div class="col">
 					
-					<h3>Follow us</h3>
+					<h3><?php echo $footer_info["headings"]["first_heading"]; ?></h3>
 					
 					<?php $socials = get_field("social_media", "options"); if($socials && sizeof($socials) > 0): ?>
 					
@@ -58,7 +60,7 @@
 				
 				<div class="col">
 					
-					<h3>Useful Links</h3>
+					<h3><?php echo $footer_info["headings"]["second_heading"]; ?></h3>
 					
 					<?php wp_nav_menu(array(
 						'menu' => 'Useful links'
@@ -68,7 +70,7 @@
 				
 				<div class="col">
 					
-					<h3>Need help?</h3>
+					<h3><?php echo $footer_info["headings"]["third_heading"]; ?></h3>
 					
 					<?php wp_nav_menu(array(
 						'menu' => 'Need help'

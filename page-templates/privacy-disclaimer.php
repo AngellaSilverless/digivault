@@ -16,7 +16,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <!-- Content -->
 
-<div class="container spacing cols-12 pt5 pb5">
+<div class="container content-text spacing cols-12 pt5 pb5">
 	
 	<div class="col"><?php the_content(); ?></div>
 

@@ -34,7 +34,7 @@
 				
 				<?php endif; if($icon["box_button_target"]): ?>
 				
-					<div><a href="<?php echo get_permalink($icon["box_button_target"]); ?>" class="button mt2"><span>Read More</span></a></div>
+					<div><a href="<?php echo get_permalink($icon["box_button_target"]); ?>" class="button mt2"><span><?php echo $icon["box_button_label"]; ?></span></a></div>
 				
 				<?php endif; ?>
 			

@@ -10,7 +10,7 @@ jQuery(document).ready(function( $ ) {
  
 /* Smooth scroll */
 
-    $('nav a, a.button, a.next-section').click(function(e) {
+    $('nav a, a.button, a.next-section, .content-text a').click(function(e) {
 	    if($(this).attr('href') != "#") {
 	        $('html, body').animate({
 	            scrollTop: $( $(this).attr('href') ).offset().top

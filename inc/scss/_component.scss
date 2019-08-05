@@ -311,14 +311,15 @@ a.next-section {
 			}
 				
 			&:before {
+				content: "";
+				width: 1em;
+				height: 1.2em;
 				color: $brand-secondary;
-				font-family: "Font Awesome 5 Free";
-				font-weight: 600;
-				content: "\f078";
+				background-image: url("inc/img/arrow-down.svg");
+				@include backgroundCover;
 				position: absolute;
 				z-index: 1;
 				right: 1em;
-				font-size: 1.2em;
 				top: 50%;
 				transform: translateY(-50%);
 				cursor: pointer;
@@ -401,31 +402,33 @@ a.next-section {
 			margin: 0;
 			width: 16px;
 			height: 16px;
-			
+
 			&:before {
-				font-family: "Font Awesome 5 Free";
-				font-weight: 600;
 				content: "";
 				position: absolute;
+				color: $brand-secondary;
+				background-color: hsl(0, 0%, 87%);
+				background-image: url("");
+				background-size: 12px 12px;
+				background-position: center center;
+				background-repeat: no-repeat;
 				width: 16px;
 				height: 16px;
 				border: none;
-				background: hsl(0, 0%, 87%);
 				cursor: pointer;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				transition: background 0.5s ease;
+				transition: background-color 0.5s ease;
 			}
 			
 			&:checked::before {
-				content: "\f00c";
-				color: white;
-				background: $brand-primary;
+				background-color: $brand-primary;
+				background-image: url("inc/img/check.svg");
 			}
 			
 			&:hover:before {
-    			background: hsl(0, 0%, 70%);
+    			background-color: hsl(0, 0%, 70%);
 			}
 		}
 	}
