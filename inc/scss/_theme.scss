@@ -536,4 +536,12 @@ a.category {
 			background: darken($brand-blue, 10%);
 		}
 	}
+	
+	nav ul li a:before {
+		background: $brand-blue;
+	}
+	
+	#form-newsletter input:-webkit-autofill, #form-newsletter input:-webkit-autofill:active, #form-newsletter input:-webkit-autofill:focus, #form-newsletter input:-webkit-autofill:hover {
+		-webkit-box-shadow: 0 0 0 30px $brand-blue inset!important;
+	}
 }
