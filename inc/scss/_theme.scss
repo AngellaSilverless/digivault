@@ -504,19 +504,36 @@ a.category {
 
 /*===========SPECIFIC PAGE==========*/
 
-/*
 .page-id-19 {
 	
 	.heading__primary-color, .custom-heading em, .button, .heading__primary-color {
-		color: #231fc8;
+		color: $brand-blue;
 	}
 	
 	.cta-newsletter {
-		background: #231fc8;
+		background: $brand-blue;
 	}
 	
 	.custom-box-icon svg path {
-		fill: #231fc8 !important;
+		fill: $brand-blue !important;
+	}
+	
+	a.button {
+		border: 2px solid $brand-blue;
+		
+		&:before {
+			background: $brand-blue;
+		}
+		
+		&:hover {
+			color: white;
+		}
+	}
+	
+	.button__wrapper {
+		
+		&:after {
+			background: darken($brand-blue, 10%);
+		}
 	}
 }
-*/
