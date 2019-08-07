@@ -105,11 +105,16 @@ body {
 	}
 	
 	.menu-trigger {
-		display: block;
+		display: flex;
+		align-items: center;
 		font-size: 2em;
 		color: $brand-tertiary;
 		margin: -1em;
 		padding: 1em;
+		
+		img {
+			width: 1em;
+		}
 	}
 	
 	.mainMenu {
@@ -149,6 +154,10 @@ body {
 			}
 		}
 	}
+}
+
+.page-id-19 #nav .mainMenu #menu-main-menu {
+	background: $brand-blue;
 }
 
 .hero__content .copy {

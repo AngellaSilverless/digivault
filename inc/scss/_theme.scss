@@ -496,6 +496,10 @@ a.category {
 	cursor: pointer;
 	transition: opacity 0.3s ease-in-out;
 	
+	svg {
+		width: 1em;
+	}
+	
 	&.visible {
 		pointer-events: auto;
 		opacity: 1;

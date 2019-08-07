@@ -30,7 +30,7 @@ get_header();?>
 		
 		<?php endforeach; ?>
 		
-		<div class="reset-category"><i class="fas fa-undo"></i></div>
+		<div class="reset-category"><?php echo file_get_contents(get_stylesheet_directory_uri() . "/inc/img/undo.svg"); ?></div>
 	
 	</div>
 	

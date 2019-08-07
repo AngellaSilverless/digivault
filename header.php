@@ -51,7 +51,7 @@
 						
 						<div class="col menu">
 							
-							<div class="menu-trigger"><i class="fas fa-bars"></i></div>
+							<div class="menu-trigger"><img src="<?php echo get_stylesheet_directory_uri() . "/inc/img/bars.svg"; ?>"></div>
 								
 							<?php
 							
