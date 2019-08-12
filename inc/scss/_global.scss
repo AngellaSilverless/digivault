@@ -337,6 +337,10 @@ nav {
 						padding-right: 2rem;
 					}
 				}
+				
+				#menu-item-126 a::before {
+					background: $brand-blue;
+				}
 			}
 		}
 	}

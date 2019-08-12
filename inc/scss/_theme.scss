@@ -510,23 +510,31 @@ a.category {
 
 .page-id-19 {
 	
-	.heading__primary-color, .custom-heading em, .button, .heading__primary-color {
+	.custom-heading em {
 		color: $brand-blue;
 	}
 	
+	.custom-box-icon .heading__primary-color {
+		color: $brand-secondary;
+	}
+	
+	.button {
+		color: $brand-secondary;
+	}
+	
 	.cta-newsletter {
-		background: $brand-blue;
+		background: $brand-secondary;
 	}
 	
 	.custom-box-icon svg path {
-		fill: $brand-blue !important;
+		fill: $brand-secondary !important;
 	}
 	
 	a.button {
-		border: 2px solid $brand-blue;
+		border: 2px solid $brand-secondary;
 		
 		&:before {
-			background: $brand-blue;
+			background: $brand-secondary;
 		}
 		
 		&:hover {
@@ -537,15 +545,11 @@ a.category {
 	.button__wrapper {
 		
 		&:after {
-			background: darken($brand-blue, 10%);
+			background: darken($brand-secondary, 10%);
 		}
 	}
 	
-	nav ul li a:before {
-		background: $brand-blue;
-	}
-	
 	#form-newsletter input:-webkit-autofill, #form-newsletter input:-webkit-autofill:active, #form-newsletter input:-webkit-autofill:focus, #form-newsletter input:-webkit-autofill:hover {
-		-webkit-box-shadow: 0 0 0 30px $brand-blue inset!important;
+		-webkit-box-shadow: 0 0 0 30px $brand-secondary inset!important;
 	}
 }
