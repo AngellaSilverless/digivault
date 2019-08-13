@@ -287,6 +287,85 @@
 	}
 }
 
+#cookie-law-info-bar {
+	
+	.cookie_text {
+		text-align: justify;
+		
+		.cli-plugin-main-link {
+			text-decoration: none;
+			transition: color 0.5s ease-in-out;
+			
+			&:hover {
+				color: lighten($brand-primary, 10%) !important;
+			}
+		}
+	}
+	
+	.cookie_actions a {
+		font-family: "Open Sans", serif;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 14px;
+		padding: 0.6rem 1.2rem;
+		line-height: 1;
+		position: relative;
+		transition: color 0.5s ease-in-out;
+		
+		&.cli_settings_button {
+			color: white;
+			
+			&:before {
+				background: black;
+				border: 2px solid white;
+			}
+		}
+		
+		&.cli_action_button {
+			color: white;
+			cursor: pointer;
+			
+			&:before {
+				background: $brand-primary;
+				border: 2px solid $brand-primary;
+			}
+		}
+		
+		&:before {
+			content: "";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -2;
+		}
+		
+		&:after {
+			content: "";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			background: white;
+			left: 0;
+			top: 0;
+			z-index: -1;
+			transform: scaleY(0);
+			transition: transform .5s ease-in-out;
+			transform-origin: bottom;
+		}
+		
+		&:hover {
+			color: darken($brand-primary, 10%) !important;
+			
+			&:after {
+				transform: scaleY(1);
+			}
+		}
+	}
+}
+
 /*===========FOOTER==========*/
 
 footer {

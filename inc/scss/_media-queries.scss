@@ -331,6 +331,30 @@ footer .socket > .container {
 	row-gap: 3em;
 }
 
+#cookie-law-info-bar .container {
+	display: block;
+	
+	.cookie_actions {
+		margin-top: 1em;
+	}
+	
+	.cookie_text {
+		font-size: 0.9em;
+	}
+	
+	.cli_settings_button {
+		margin: 0 1em 0 0 !important;
+	}
+	
+	.cli_action_button {
+		margin: 0 !important;
+	}
+	
+	.cookie_actions a {
+		font-size: 12px;
+	}
+}
+
 }/*---end small mq---*/
 
 
