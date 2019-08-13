@@ -33,7 +33,7 @@
 				<div><?php echo $footer_info["footer_text"]; ?></div>
 				
 				<div class="highlight">Digivault Limited <?php echo date("Y"); ?>. All rights reserved.</div>
-				
+
 			</div>
 			
 			<div class="col menus container no-gutter cols-4">
@@ -81,6 +81,14 @@
 			</div>
 			
 		</div>
+
+<div class="container">
+    <div class="legal">
+        
+        				<p>None of the services mentioned herein have been approved by any authorities in nor outside of United Kingdom. This website is not directed to any person in any jurisdiction where (by reason of that person’s nationality, residence or otherwise) the publication or availability of this website is prohibited</p>
+    </div>
+    
+</div>
 			
 	</div>
 

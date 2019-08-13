@@ -280,6 +280,11 @@
     }
 }
 
+.legal {
+    grid-column: 4/13;
+    font-size: 0.65em;
+}
+
 /*===========MEDIA QUERIES==========*/
 
 @each $name, $size in $breakpoints {
